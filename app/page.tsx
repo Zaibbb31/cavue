@@ -20,6 +20,14 @@ interface CarouselCard {
   bgColor: string;
 }
 
+interface WorkProject {
+  id: number;
+  title: string;
+  category: string;
+  year: string;
+  image: string;
+}
+
 const carouselItems: CarouselCard[] = [
   {
     id: 1,
