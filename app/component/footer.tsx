@@ -62,7 +62,7 @@ export default function Footer() {
                 About Us
               </Link>
               <Link
-                href="/services"
+                href="/Service"
                 className="text-[#4B5563] hover:text-[#0C3852] transition-colors"
               >
                 Services
