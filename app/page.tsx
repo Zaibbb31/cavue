@@ -496,7 +496,7 @@ export default function Home() {
           {/* Bottom CTA Button */}
           <div className="flex justify-center mt-16 sm:mt-20">
             <Link
-              href="/work"
+              href="/projectpage"
               className="inline-flex items-center justify-center px-7 sm:px-8 py-3 sm:py-3.5 bg-gradient-to-b from-[#125883] via-[#0C4568] to-[#083550] text-white font-medium text-sm sm:text-base border-t border-white/25 border-b border-black/30 shadow-[inset_0_2px_4px_rgba(255,255,255,0.2),inset_0_-2px_5px_rgba(0,0,0,0.45)]"
             >
               View All Projects

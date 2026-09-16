@@ -12,8 +12,8 @@ export default function Footer() {
       </div>
 
       <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 pt-16 sm:pt-24 md:pt-28">
-        {/* Main Floating White Card */}
-        <div className="bg-white shadow-[0_20px_60px_-15px_rgba(0,0,0,0.07)] border border-black/[0.04] p-8 sm:p-12 md:p-16 flex flex-col items-center text-center">
+        {/* Main Floating Glassmorphic White Card with Backdrop Blur */}
+        <div className="bg-white/80 backdrop-blur-xl shadow-[0_20px_60px_-15px_rgba(0,0,0,0.07)] border border-white/60 p-8 sm:p-12 md:p-16 flex flex-col items-center text-center">
           {/* Gochi Tag Badge */}
           <span className="font-gochi text-[#2B7DA8] text-base sm:text-lg tracking-wider mb-2 sm:mb-3 block">
             / LET&apos;S CREATE
@@ -68,16 +68,16 @@ export default function Footer() {
                 Services
               </Link>
               <Link
-                href="/work"
+                href="/projectpage"
                 className="text-[#4B5563] hover:text-[#0C3852] transition-colors"
               >
                 Work
               </Link>
               <Link
-                href="/blogs"
+                href="/insights"
                 className="text-[#4B5563] hover:text-[#0C3852] transition-colors"
               >
-                Blogs
+                Insights
               </Link>
             </div>
           </div>
