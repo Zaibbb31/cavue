@@ -44,7 +44,7 @@ export default function Footer() {
           {/* Card Bottom Meta & Navigation Links */}
           <div className="w-full pt-6 sm:pt-8 border-t border-black/[0.05] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs sm:text-sm text-[#4B5563]">
             <p className="text-[#6B7280]">
-              A agency created by{" "}
+              Built from scratch by{" "}
               <span className="font-bold text-[#111827]">Designncode</span>
             </p>
 
