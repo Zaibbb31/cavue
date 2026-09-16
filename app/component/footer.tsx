@@ -1,0 +1,88 @@
+import React from "react";
+import Link from "next/link";
+
+export default function Footer() {
+  return (
+    <footer className="w-full bg-[#FAFAFA] pt-16 sm:pt-24 pb-12 sm:pb-16 relative overflow-hidden">
+      {/* Giant CAVUE Background Wordmark */}
+      <div className="w-full flex justify-center items-center pointer-events-none select-none overflow-hidden absolute top-0 sm:top-2 left-0 right-0 z-0">
+        <span className="font-medium text-[#0C3852] tracking-tight text-[26vw] sm:text-[25vw] md:text-[24vw] lg:text-[340px] xl:text-[390px] leading-none uppercase opacity-95">
+          CAVUE
+        </span>
+      </div>
+
+      <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 pt-16 sm:pt-24 md:pt-28">
+        {/* Main Floating White Card */}
+        <div className="bg-white shadow-[0_20px_60px_-15px_rgba(0,0,0,0.07)] border border-black/[0.04] p-8 sm:p-12 md:p-16 flex flex-col items-center text-center">
+          {/* Gochi Tag Badge */}
+          <span className="font-gochi text-[#2B7DA8] text-base sm:text-lg tracking-wider mb-2 sm:mb-3 block">
+            / LET&apos;S CREATE
+          </span>
+
+          {/* Heading */}
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-[54px] font-medium text-[#4B5563] tracking-tight leading-tight">
+            Have a project?
+          </h2>
+          <h3 className="text-3xl sm:text-4xl md:text-5xl lg:text-[54px] font-medium text-[#111827] tracking-tight leading-tight mt-1 mb-4 sm:mb-6">
+            Let&apos;s make it slay.
+          </h3>
+
+          {/* Subtitle */}
+          <p className="text-[#6B7280] text-sm sm:text-base md:text-[16px] leading-relaxed max-w-lg mx-auto mb-8 sm:mb-10">
+            It&apos;s short, memorable, and gives the agency a bit of personality
+            without becoming too unprofessional.
+          </p>
+
+          {/* CTA Button */}
+          <Link
+            href="/contact"
+            className="inline-flex items-center justify-center px-7 py-3 sm:px-8 sm:py-3.5 bg-gradient-to-b from-[#125883] via-[#0C4568] to-[#083550] text-white font-medium text-sm sm:text-base border-t border-white/25 border-b border-black/30 shadow-[inset_0_2px_4px_rgba(255,255,255,0.2),inset_0_-2px_5px_rgba(0,0,0,0.45)] hover:opacity-95 transition-opacity mb-12 sm:mb-16"
+          >
+            Make Some Noise
+          </Link>
+
+          {/* Card Bottom Meta & Navigation Links */}
+          <div className="w-full pt-6 sm:pt-8 border-t border-black/[0.05] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs sm:text-sm text-[#4B5563]">
+            <p className="text-[#6B7280]">
+              A agency created by{" "}
+              <span className="font-bold text-[#111827]">Designncode</span>
+            </p>
+
+            <div className="flex flex-wrap items-center justify-center gap-5 sm:gap-7 font-medium">
+              <Link
+                href="/"
+                className="text-[#4B5563] hover:text-[#0C3852] transition-colors"
+              >
+                Home
+              </Link>
+              <Link
+                href="/about"
+                className="text-[#4B5563] hover:text-[#0C3852] transition-colors"
+              >
+                About Us
+              </Link>
+              <Link
+                href="/services"
+                className="text-[#4B5563] hover:text-[#0C3852] transition-colors"
+              >
+                Services
+              </Link>
+              <Link
+                href="/work"
+                className="text-[#4B5563] hover:text-[#0C3852] transition-colors"
+              >
+                Work
+              </Link>
+              <Link
+                href="/blogs"
+                className="text-[#4B5563] hover:text-[#0C3852] transition-colors"
+              >
+                Blogs
+              </Link>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
+}
