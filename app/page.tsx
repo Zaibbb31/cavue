@@ -2,15 +2,12 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Navbar from "./component/navbar";
+import HeroSection from "./component/hero";
 import AboutScrollSection from "./component/about-scroll-section";
 import TestimonialSection from "./component/testimonial";
 import FAQSection from "./component/faq";
 import InsightsSection from "./component/insights";
 import Footer from "./component/footer";
-
-
-
-
 
 interface CarouselCard {
   id: number;
@@ -145,138 +142,8 @@ export default function Home() {
       {/* Navigation Bar */}
       <Navbar />
 
-      {/* Hero Section */}
-      <section className="relative w-full pt-12 md:pt-16 lg:pt-20 pb-12 overflow-hidden mt-15">
-        <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Subtitle / Category Badge */}
-          <div className="mb-4 sm:mb-6">
-            <span className="font-gochi text-[#2B7DA8] text-base sm:text-lg tracking-wider block">
-              / A CREATIVE MARKETING AGENCY FOR BOLD IDEAS
-            </span>
-          </div>
-
-          {/* Hero Grid */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start mb-12 lg:mb-16">
-            {/* Main Headline (Left Column) */}
-            <div className="lg:col-span-7 flex flex-col">
-              <h1 className="text-2xl sm:text-[32px] md:text-[44px] lg:text-[63px] xl:text-[68px] font-medium text-[#0C3852] tracking-tight leading-[1.08] uppercase">
-                WE MAKE BRANDS{" "}
-                <span className="font-gochi text-[#3CA8D9] font-normal lowercase tracking-normal text-[1.2em] inline-block -rotate-2 transform">
-                  impossible
-                </span>{" "}
-                TO IGNORE.
-              </h1>
-
-              {/* Social Proof / Reliable Fun-Maker */}
-              <div className="mt-8 sm:mt-10 flex items-center gap-4">
-                {/* Overlapping Avatars */}
-                <div className="flex -space-x-3 items-center">
-                  <div className="relative w-11 h-11 rounded-full border-2 border-white overflow-hidden shadow-sm">
-                    <Image
-                      src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=120&auto=format&fit=crop&q=80"
-                      alt="Team member"
-                      fill
-                      className="object-cover"
-                    />
-                  </div>
-                  <div className="relative w-11 h-11 rounded-full border-2 border-white overflow-hidden shadow-sm">
-                    <Image
-                      src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=120&auto=format&fit=crop&q=80"
-                      alt="Team member"
-                      fill
-                      className="object-cover"
-                    />
-                  </div>
-                  <div className="relative w-11 h-11 rounded-full border-2 border-white overflow-hidden shadow-sm">
-                    <Image
-                      src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=120&auto=format&fit=crop&q=80"
-                      alt="Team member"
-                      fill
-                      className="object-cover"
-                    />
-                  </div>
-                </div>
-
-                {/* Rating / Stat Info */}
-                <div className="flex flex-col">
-                  <span className="text-lg sm:text-xl font-bold text-[#0C3852] leading-tight">
-                    210 +
-                  </span>
-                  <span className="text-xs sm:text-sm font-medium text-[#4A728A]">
-                    Reliable Fun-Maker!
-                  </span>
-                </div>
-              </div>
-            </div>
-
-            {/* Description & CTA (Right Column) */}
-            <div className="lg:col-span-5 flex flex-col justify-start lg:pt-4">
-              <p className="text-[#38607A] text-sm sm:text-base md:text-[17px] leading-relaxed mb-6 sm:mb-8 max-w-lg">
-                We turn ambitious ideas into bold brands, memorable campaigns,
-                and digital experiences that get people talking.
-              </p>
-
-              <div>
-                <Link
-                  href="/contact"
-                  className="inline-flex items-center justify-center px-6 py-2.5 sm:px-7 sm:py-3 bg-gradient-to-b from-[#125883] via-[#0C4568] to-[#083550] text-white font-medium text-sm sm:text-base border-t border-white/25 border-b border-black/30 shadow-[inset_0_2px_4px_rgba(255,255,255,0.2),inset_0_-2px_5px_rgba(0,0,0,0.45)]"
-                >
-                  Let&apos;s Make It Happen
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Horizontal Animated Image Carousel */}
-        <div className="w-full relative mt-4 overflow-hidden py-4">
-          <div className="animate-marquee flex gap-6 sm:gap-8 items-center">
-            {/* First Set of Items */}
-            {carouselItems.map((item) => (
-              <div
-                key={`item-1-${item.id}`}
-                className="group relative flex-shrink-0 w-[280px] sm:w-[360px] md:w-[420px] aspect-[4/3] overflow-hidden bg-zinc-200/80 shadow-sm transition-transform duration-300"
-              >
-                <Image
-                  src={item.image}
-                  alt={item.title}
-                  fill
-                  sizes="(max-width: 640px) 280px, (max-width: 768px) 360px, 420px"
-                  className="object-cover transition-transform duration-500"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6 text-white">
-                  <span className="text-xs uppercase tracking-wider text-[#3CA8D9] font-bold mb-1">
-                    {item.category}
-                  </span>
-                  <h3 className="text-lg font-bold">{item.title}</h3>
-                </div>
-              </div>
-            ))}
-
-            {/* Duplicate Set for Seamless Loop */}
-            {carouselItems.map((item) => (
-              <div
-                key={`item-2-${item.id}`}
-                className="group relative flex-shrink-0 w-[280px] sm:w-[360px] md:w-[420px] aspect-[4/3] overflow-hidden bg-zinc-200/80 shadow-sm transition-transform duration-300"
-              >
-                <Image
-                  src={item.image}
-                  alt={item.title}
-                  fill
-                  sizes="(max-width: 640px) 280px, (max-width: 768px) 360px, 420px"
-                  className="object-cover transition-transform duration-500"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6 text-white">
-                  <span className="text-xs uppercase tracking-wider text-[#3CA8D9] font-bold mb-1">
-                    {item.category}
-                  </span>
-                  <h3 className="text-lg font-bold">{item.title}</h3>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* Main Hero Section */}
+      <HeroSection />
 
       {/* Brands / Impact Section */}
       <section className="w-full py-12 sm:py-14 md:py-16 bg-[#FAFAFA] overflow-hidden">

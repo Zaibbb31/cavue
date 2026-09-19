@@ -10,6 +10,8 @@
   --color-foreground: var(--foreground);
   --font-sans: 'Geist', var(--font-geist-sans), sans-serif;
   --font-mono: var(--font-geist-mono), monospace;
+  --font-anton: 'Anton', sans-serif;
+  --font-bebas: 'Bebas Neue', cursive, sans-serif;
   --font-fraunces: 'Fraunces', serif;
   --font-geist: 'Geist', sans-serif;
   --font-gochi: 'Gochi Hand', cursive;
@@ -34,6 +36,40 @@ body {
   overflow-x: hidden;
 }
 
+@keyframes float-slow {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes float-reverse {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(8px);
+  }
+}
+
+.animate-float-1 {
+  animation: float-slow 5s ease-in-out infinite;
+}
+
+.animate-float-2 {
+  animation: float-reverse 6s ease-in-out infinite;
+}
+
+.animate-float-3 {
+  animation: float-slow 5.5s ease-in-out infinite 0.5s;
+}
+
+.animate-float-4 {
+  animation: float-reverse 6.5s ease-in-out infinite 1s;
+}
+
 @keyframes marquee {
   0% {
     transform: translateX(0%);
@@ -51,5 +87,76 @@ body {
 
 .animate-marquee:hover {
   animation-play-state: paused;
+}
+
+@keyframes marquee-logos {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-25%);
+  }
+}
+
+.animate-marquee-logos {
+  display: flex;
+  width: max-content;
+  animation: marquee-logos 25s linear infinite;
+}
+
+.animate-marquee-logos:hover {
+  animation-play-state: paused;
+}
+
+@keyframes spin-slow {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 20s linear infinite;
+}
+
+@keyframes logo-float-1 {
+  0%, 100% {
+    transform: translate(4px, 4px) rotate(-10deg) scale(0.95);
+  }
+  50% {
+    transform: translate(-18px, -18px) rotate(-22deg) scale(1.06);
+  }
+}
+
+@keyframes logo-float-2 {
+  0%, 100% {
+    transform: translate(-4px, -4px) rotate(10deg) scale(0.95);
+  }
+  50% {
+    transform: translate(24px, 14px) rotate(22deg) scale(1.08);
+  }
+}
+
+@keyframes logo-float-3 {
+  0%, 100% {
+    transform: translate(0px, -4px) rotate(-2deg) scale(0.95);
+  }
+  50% {
+    transform: translate(-10px, 30px) rotate(-12deg) scale(1.08);
+  }
+}
+
+.animate-logo-card-1 {
+  animation: logo-float-1 4.5s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
+}
+
+.animate-logo-card-2 {
+  animation: logo-float-2 5s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite 0.3s;
+}
+
+.animate-logo-card-3 {
+  animation: logo-float-3 5.5s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite 0.6s;
 }
 
