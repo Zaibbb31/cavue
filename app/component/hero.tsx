@@ -1,139 +1,785 @@
 "use client";
 
-import React from "react";
-import Link from "next/link";
+import React, { useState, useRef } from "react";
+import Image from "next/image";
 
 export default function HeroSection() {
+  const [email, setEmail] = useState("");
+  const [submitted, setSubmitted] = useState(false);
+  const [isPlayingVideo1, setIsPlayingVideo1] = useState(true);
+  const [isPlayingVideo2, setIsPlayingVideo2] = useState(true);
+  const [isPlayingVideo3, setIsPlayingVideo3] = useState(true);
+  const [isPlayingVideo4, setIsPlayingVideo4] = useState(true);
+  const [isMuted, setIsMuted] = useState(true);
+  const carouselRef = useRef<HTMLDivElement>(null);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (email) {
+      setSubmitted(true);
+      setTimeout(() => setSubmitted(false), 3500);
+    }
+  };
+
+  const scrollCarousel = (direction: "left" | "right") => {
+    if (carouselRef.current) {
+      const scrollAmount = direction === "left" ? -340 : 340;
+      carouselRef.current.scrollBy({ left: scrollAmount, behavior: "smooth" });
+    }
+  };
+
   return (
-    <section className="relative w-full pt-10 sm:pt-14 md:pt-18 lg:pt-20 pb-12 sm:pb-16 md:pb-20 bg-[#F8FAFC] text-[#25282F] overflow-hidden select-none">
-      {/* Main Container */}
-      <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center text-center">
+    <section className="relative w-full pt-16 sm:pt-20 md:pt-24 lg:pt-28 pb-16 sm:pb-24 bg-[#FAFAFA] text-[#111317] overflow-hidden">
+      {/* Background Subtle Ambience Glow */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[400px] bg-gradient-to-b from-[#FFF5EE]/60 via-[#F3F4F6]/40 to-transparent blur-3xl pointer-events-none -z-10" />
+
+      {/* Top Hero Container (Headline, Rating, CTA) */}
+      <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Top Pill Badge: AI-Driven Agency */}
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 mb-5 sm:mb-6 transition-transform duration-300 cursor-default">
-          <span className="text-base sm:text-xl font-gochi text-[#0C4568] tracking-wide">
-            AI-Driven Agency
-          </span>
-        </div>
-
-        {/* Main Headline Composition */}
-        <h1 className="flex flex-col items-center justify-center text-center font-sans tracking-[-0.035em] text-[#23262F] font-medium leading-[1.08] max-w-5xl mx-auto">
-          {/* Line 1: Your AI Sprint Team */}
-          <span className="text-4xl sm:text-6xl md:text-7xl lg:text-[84px] xl:text-[92px] block">
-            Your AI Sprint Team
-          </span>
-
-          {/* Line 2: on Demand + Blue Capsule with 3 Floating Moving Logo Cards */}
-          <span className="text-4xl sm:text-6xl md:text-7xl lg:text-[84px] xl:text-[92px] flex items-center justify-center flex-wrap gap-x-3 sm:gap-x-5 md:gap-x-7 mt-1 sm:mt-2">
-            <span>on Demand</span>
-
-            {/* Blue Capsule Pill with 3 Animated Floating Logos */}
-            <span className="relative inline-flex items-center justify-center align-middle my-2 sm:my-0">
-              
-              {/* Outer Capsule Shape */}
-              <span className="relative z-10 w-28 sm:w-38 md:w-48 lg:w-56 h-10 sm:h-14 md:h-17 lg:h-20 bg-gradient-to-r from-[#0C4568] via-[#0E527C] to-[#125D8C] rounded-full inline-block shadow-[0_10px_25px_rgba(12,69,104,0.35)]" />
-
-              {/* Glowing Blue Drop Halo */}
-              <span className="absolute inset-0 bg-[#0C4568]/30 rounded-full blur-xl -z-10 scale-110" />
-
-              {/* LOGO CARD 1 (Top-Left Green Icon) */}
-              <span className="absolute -top-3 sm:-top-5 md:-top-7 -left-1 sm:-left-2 md:-left-3 z-30 animate-logo-card-1 transition-transform">
-                <span className="flex items-center justify-center w-9 h-9 sm:w-13 sm:h-13 md:w-16 md:h-16 lg:w-18 lg:h-18 bg-white rounded-xl sm:rounded-2xl shadow-[0_10px_25px_rgba(0,0,0,0.14)] border border-slate-100 p-1.5 sm:p-2.5 hover:scale-110 transition-transform duration-300">
-                  <svg
-                    viewBox="0 0 48 48"
-                    fill="none"
-                    className="w-full h-full text-[#10B981]"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M24 6L38 14V34L24 42L10 34V14L24 6Z"
-                      fill="#10B981"
-                      fillOpacity="0.12"
-                      stroke="#10B981"
-                      strokeWidth="3.5"
-                      strokeLinejoin="round"
-                    />
-                    <path
-                      d="M24 16L31 20V28L24 32L17 28V20L24 16Z"
-                      fill="#10B981"
-                    />
-                  </svg>
-                </span>
-              </span>
-
-              {/* LOGO CARD 2 (Right Purple/Indigo Icon) */}
-              <span className="absolute top-1 sm:top-2 md:top-3 -right-4 sm:-right-6 md:-right-8 lg:-right-10 z-30 animate-logo-card-2 transition-transform">
-                <span className="flex items-center justify-center w-9 h-9 sm:w-13 sm:h-13 md:w-16 md:h-16 lg:w-18 lg:h-18 bg-white rounded-xl sm:rounded-2xl shadow-[0_10px_25px_rgba(0,0,0,0.14)] border border-slate-100 p-1.5 sm:p-2.5 hover:scale-110 transition-transform duration-300">
-                  <svg
-                    viewBox="0 0 48 48"
-                    fill="none"
-                    className="w-full h-full text-[#6366F1]"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M12 10C12 8.89543 12.8954 8 14 8H26C27.1046 8 28 8.89543 28 10V22C28 23.1046 27.1046 24 26 24H14C12.8954 24 12 23.1046 12 22V10Z"
-                      fill="#6366F1"
-                    />
-                    <path
-                      d="M20 24C20 22.8954 20.8954 22 22 22H34C35.1046 22 36 22.8954 36 24V36C36 37.1046 35.1046 38 34 38H22C20.8954 38 20 37.1046 20 36V24Z"
-                      fill="#4F46E5"
-                      fillOpacity="0.8"
-                    />
-                  </svg>
-                </span>
-              </span>
-
-              {/* LOGO CARD 3 (Bottom Sky Blue Icon) */}
-              <span className="absolute -bottom-5 sm:-bottom-7 md:-bottom-9 lg:-bottom-11 left-6 sm:left-10 md:left-14 lg:left-16 z-30 animate-logo-card-3 transition-transform">
-                <span className="flex items-center justify-center w-9 h-9 sm:w-13 sm:h-13 md:w-16 md:h-16 lg:w-18 lg:h-18 bg-white rounded-xl sm:rounded-2xl shadow-[0_12px_28px_rgba(0,0,0,0.16)] border border-slate-100 p-1.5 sm:p-2.5 hover:scale-110 transition-transform duration-300">
-                  <svg
-                    viewBox="0 0 48 48"
-                    fill="none"
-                    className="w-full h-full text-[#0284C7]"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M14 14C14 11.7909 15.7909 10 18 10C20.2091 10 22 11.7909 22 14V22H14V14Z"
-                      fill="#0284C7"
-                    />
-                    <path
-                      d="M26 26C26 23.7909 27.7909 22 30 22C32.2091 22 34 23.7909 34 26V34C34 36.2091 32.2091 38 30 38C27.7909 38 26 36.2091 26 34V26Z"
-                      fill="#0284C7"
-                    />
-                    <path
-                      d="M14 26C14 23.7909 15.7909 22 18 22H26V30C26 32.2091 24.2091 34 22 34C19.7909 34 18 32.2091 18 30V26H14Z"
-                      fill="#38BDF8"
-                    />
-                  </svg>
-                </span>
-              </span>
-
+        {/* Rating Badge */}
+        <div className="flex items-center gap-3.5 mb-6 sm:mb-8">
+          <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#18181B] text-white flex items-center justify-center shadow-md">
+            <svg
+              className="w-4 h-4 sm:w-5 sm:h-5 fill-current text-white"
+              viewBox="0 0 24 24"
+            >
+              <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+            </svg>
+          </div>
+          <div className="flex flex-col text-left">
+            <span className="text-sm sm:text-base font-bold text-[#111317] leading-tight tracking-tight">
+              4.9/5 Rating
             </span>
-          </span>
-        </h1>
-
-        {/* Subtitle Description */}
-        <p className="mt-6 sm:mt-8 md:mt-9 text-sm sm:text-base md:text-[17px] text-[#5A5D66] max-w-xl sm:max-w-2xl mx-auto leading-relaxed font-sans px-4">
-          From discovery to deployment, we plug into your stack to prototype, validate, and launch AI experiences your users actually love.
-        </p>
-
-        {/* Action Buttons */}
-        <div className="mt-6 sm:mt-8 flex flex-wrap items-center justify-center gap-3.5 sm:gap-4 z-20">
-          <Link
-            href="/Service"
-            className="px-7 sm:px-9 py-3 sm:py-3.5 rounded-full bg-[#0C4568] hover:bg-[#083550] text-white font-medium text-sm sm:text-base shadow-[0_10px_25px_-5px_rgba(12,69,104,0.35)] hover:shadow-[0_14px_30px_-5px_rgba(12,69,104,0.5)] transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
-          >
-            Explore Services
-          </Link>
-
-          <Link
-            href="/contact"
-            className="px-7 sm:px-9 py-3 sm:py-3.5 rounded-full bg-white hover:bg-slate-50 text-[#0C3852] border border-slate-200/90 hover:border-[#0C4568]/30 font-medium text-sm sm:text-base shadow-[0_2px_8px_rgba(0,0,0,0.04)] hover:shadow-md transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
-          >
-            View Pricing Plans
-          </Link>
+            <span className="text-xs sm:text-[13px] text-slate-500 font-normal">
+              Based on 10,000+ Creator Reviews
+            </span>
+          </div>
         </div>
 
+        {/* 2-Column Split: Headline on Left, Subtitle & Email CTA on Right */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-end mb-14 sm:mb-20">
+          
+          {/* Left Column: Big Bold Headline */}
+          <div className="lg:col-span-7">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-[68px] xl:text-[74px] font-medium text-[#111317] tracking-[-0.035em] leading-[1.05]">
+              Built For Real Growth, <br />
+              <span className="text-[#111317]">Loved By Creators</span>
+            </h1>
+          </div>
+
+          {/* Right Column: Descriptive text + Email Form */}
+          <div className="lg:col-span-5 flex flex-col justify-end lg:pl-4">
+            <p className="text-slate-600 text-base sm:text-lg leading-relaxed mb-6 sm:mb-7 font-normal max-w-md">
+              Connect with your audience and grow revenue faster with smart, AI-powered campaigns.
+            </p>
+
+            {/* Email Input + Pill Button */}
+            <form
+              onSubmit={handleSubmit}
+              className="relative flex items-center bg-[#F1F2F4]/90 hover:bg-[#EEF0F2] focus-within:bg-white border border-slate-200/90 focus-within:border-slate-300 rounded-full p-1.5 pl-5 sm:pl-6 max-w-md w-full transition-all shadow-[0_2px_8px_rgba(0,0,0,0.03)] focus-within:shadow-[0_4px_16px_rgba(0,0,0,0.06)]"
+            >
+              <input
+                type="email"
+                required
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder={submitted ? "Thanks! We'll be in touch." : "Enter your email"}
+                className="w-full bg-transparent text-sm sm:text-base text-slate-800 placeholder:text-slate-400 focus:outline-none pr-2 disabled:opacity-75"
+                disabled={submitted}
+              />
+              <button
+                type="submit"
+                className="flex-shrink-0 inline-flex items-center gap-1.5 px-5 sm:px-6 py-3 rounded-full bg-[#348DBF] hover:bg-[#2A7AA8] text-white text-xs sm:text-sm font-semibold tracking-wide shadow-[0_4px_14px_rgba(52,141,191,0.35)] hover:shadow-[0_6px_20px_rgba(52,141,191,0.45)] transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
+              >
+                <span>{submitted ? "Sent!" : "Get A Free Demo"}</span>
+                {!submitted && <span className="text-base font-normal">→</span>}
+              </button>
+            </form>
+
+          </div>
+        </div>
+
+      </div>
+
+      {/* Carousel Controls (Mobile / Desktop Quick Jump) */}
+      <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between mb-4">
+        <div className="flex items-center gap-2">
+          <span className="w-2 h-2 rounded-full bg-[#FF4500] animate-pulse" />
+          <span className="text-xs font-semibold uppercase tracking-wider text-slate-400">
+            Featured Creators & Impact
+          </span>
+        </div>
+        <div className="hidden sm:flex items-center gap-2">
+          <button
+            onClick={() => scrollCarousel("left")}
+            aria-label="Scroll left"
+            className="w-8 h-8 rounded-full border border-slate-200 bg-white/80 hover:bg-slate-100 flex items-center justify-center text-slate-600 transition-colors shadow-sm"
+          >
+            ←
+          </button>
+          <button
+            onClick={() => scrollCarousel("right")}
+            aria-label="Scroll right"
+            className="w-8 h-8 rounded-full border border-slate-200 bg-white/80 hover:bg-slate-100 flex items-center justify-center text-slate-600 transition-colors shadow-sm"
+          >
+            →
+          </button>
+        </div>
+      </div>
+
+      {/* Bottom Carousel Section: Strictly alternating [9:16 Video Frame] -> [1 Column: Figure + 3:4 Image] */}
+      <div
+        ref={carouselRef}
+        className="w-full overflow-x-auto no-scrollbar py-4 px-4 sm:px-6 lg:px-8 select-none"
+      >
+        <div className="animate-marquee flex gap-4 sm:gap-5 w-max">
+          
+          {/* ================= PRIMARY SET (Alternating Reel -> 1 Column -> Reel -> 1 Column) ================= */}
+          
+          {/* 1. 9:16 VIDEO REEL - NOAH WILSON */}
+          <div className="relative w-[270px] sm:w-[290px] h-[500px] sm:h-[520px] rounded-none overflow-hidden flex-shrink-0 bg-slate-900 group cursor-pointer transition-transform duration-300">
+            <Image
+              src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=900&auto=format&fit=crop&q=80"
+              alt="Noah Wilson - SaaS Consultant"
+              fill
+              sizes="300px"
+              className={`object-cover transition-transform duration-700 ${
+                isPlayingVideo1 ? "scale-105" : "scale-100"
+              } group-hover:scale-110`}
+            />
+
+            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/25 to-black/30" />
+
+            <div className="absolute top-4 left-4 right-4 flex items-center justify-between z-10">
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-black/60 backdrop-blur-md border border-white/15 text-[11px] font-medium text-white tracking-wide">
+                <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-ping" />
+                9:16 VIDEO
+              </span>
+
+              <button
+                type="button"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setIsMuted(!isMuted);
+                }}
+                className="w-7 h-7 bg-black/60 backdrop-blur-md border border-white/15 flex items-center justify-center text-white/90 hover:text-white transition-colors"
+                title={isMuted ? "Unmute" : "Mute"}
+              >
+                {isMuted ? (
+                  <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+                    <path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z" />
+                  </svg>
+                ) : (
+                  <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+                    <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z" />
+                  </svg>
+                )}
+              </button>
+            </div>
+
+            <div
+              onClick={() => setIsPlayingVideo1(!isPlayingVideo1)}
+              className="absolute inset-0 flex items-center justify-center z-10"
+            >
+              <div
+                className={`w-14 h-14 bg-white/25 backdrop-blur-md border border-white/40 flex items-center justify-center text-white transition-all duration-300 ${
+                  isPlayingVideo1
+                    ? "opacity-0 group-hover:opacity-100 scale-90 group-hover:scale-100"
+                    : "opacity-100 scale-100 bg-[#FF4500] border-transparent"
+                }`}
+              >
+                {isPlayingVideo1 ? (
+                  <svg className="w-6 h-6 fill-current" viewBox="0 0 24 24">
+                    <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" />
+                  </svg>
+                ) : (
+                  <svg className="w-6 h-6 fill-current translate-x-0.5" viewBox="0 0 24 24">
+                    <path d="M8 5v14l11-7z" />
+                  </svg>
+                )}
+              </div>
+            </div>
+
+            <div className="absolute bottom-0 left-0 right-0 p-5 pt-8 z-10 flex flex-col justify-end">
+              {isPlayingVideo1 && (
+                <div className="flex items-end gap-1 mb-2.5">
+                  <span className="w-1 bg-[#FF4500] animate-soundwave-1" />
+                  <span className="w-1 bg-[#FF4500] animate-soundwave-2" />
+                  <span className="w-1 bg-white animate-soundwave-3" />
+                  <span className="w-1 bg-white animate-soundwave-4" />
+                  <span className="text-[11px] text-white/80 font-mono ml-2">0:24 / 0:45</span>
+                </div>
+              )}
+
+              <h3 className="text-white text-lg sm:text-xl font-bold tracking-tight">
+                Noah Wilson
+              </h3>
+              <p className="text-white/80 text-xs sm:text-sm font-medium">
+                SaaS Consultant
+              </p>
+
+              <div className="w-full h-1 bg-white/20 mt-3 overflow-hidden">
+                <div
+                  className={`h-full bg-[#FF4500] ${
+                    isPlayingVideo1 ? "w-3/5 transition-all duration-1000" : "w-1/4"
+                  }`}
+                />
+              </div>
+            </div>
+          </div>
+
+          {/* 2. ONE COLUMN ONLY -> FIGURE CARD ($500M+) + 3:4 IMAGE CARD (RYAN MITCHELL) */}
+          <div className="w-[270px] sm:w-[290px] h-[500px] sm:h-[520px] flex flex-col gap-3.5 flex-shrink-0">
+            {/* Top Figure Card (Blue - Rounded None) */}
+            <div className="relative h-[235px] sm:h-[245px] bg-[#0062FF] rounded-none p-6 sm:p-7 flex flex-col justify-between text-white overflow-hidden group cursor-pointer transition-transform duration-300">
+              <div className="absolute -top-16 -right-16 w-36 h-36 bg-white/10 rounded-full blur-2xl pointer-events-none" />
+
+              <div>
+                <span className="text-4xl sm:text-[44px] font-extrabold tracking-tight leading-none block">
+                  $500M+
+                </span>
+              </div>
+              <p className="text-white/95 text-sm sm:text-[15px] font-medium leading-snug mt-auto max-w-[210px]">
+                Creator revenue influenced by Castly email campaigns.
+              </p>
+            </div>
+
+            {/* Bottom 3:4 Image Card (Ryan Mitchell - Rounded None) */}
+            <div className="relative flex-1 bg-slate-800 rounded-none overflow-hidden group cursor-pointer transition-transform duration-300">
+              <Image
+                src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=800&auto=format&fit=crop&q=80"
+                alt="Ryan Mitchell - Fitness & Coaching"
+                fill
+                sizes="300px"
+                className="object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-transparent" />
+              
+              <div className="absolute bottom-0 left-0 right-0 p-5 z-10">
+                <h3 className="text-white text-base sm:text-lg font-bold tracking-tight">
+                  Ryan Mitchell
+                </h3>
+                <p className="text-white/80 text-xs sm:text-sm font-medium">
+                  Fitness & Coaching
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* 3. 9:16 VIDEO REEL - AISHA GRANT */}
+          <div className="relative w-[270px] sm:w-[290px] h-[500px] sm:h-[520px] rounded-none overflow-hidden flex-shrink-0 bg-slate-900 group cursor-pointer transition-transform duration-300">
+            <Image
+              src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=900&auto=format&fit=crop&q=80"
+              alt="Aisha Grant - Podcaster"
+              fill
+              sizes="300px"
+              className={`object-cover transition-transform duration-700 ${
+                isPlayingVideo2 ? "scale-105" : "scale-100"
+              } group-hover:scale-110`}
+            />
+
+            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/25 to-black/30" />
+
+            <div className="absolute top-4 left-4 right-4 flex items-center justify-between z-10">
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-black/60 backdrop-blur-md border border-white/15 text-[11px] font-medium text-white tracking-wide">
+                <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-ping" />
+                9:16 VIDEO
+              </span>
+
+              <button
+                type="button"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setIsMuted(!isMuted);
+                }}
+                className="w-7 h-7 bg-black/60 backdrop-blur-md border border-white/15 flex items-center justify-center text-white/90 hover:text-white transition-colors"
+              >
+                {isMuted ? (
+                  <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+                    <path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z" />
+                  </svg>
+                ) : (
+                  <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+                    <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z" />
+                  </svg>
+                )}
+              </button>
+            </div>
+
+            <div
+              onClick={() => setIsPlayingVideo2(!isPlayingVideo2)}
+              className="absolute inset-0 flex items-center justify-center z-10"
+            >
+              <div
+                className={`w-14 h-14 bg-white/25 backdrop-blur-md border border-white/40 flex items-center justify-center text-white transition-all duration-300 ${
+                  isPlayingVideo2
+                    ? "opacity-0 group-hover:opacity-100 scale-90 group-hover:scale-100"
+                    : "opacity-100 scale-100 bg-[#FF4500] border-transparent"
+                }`}
+              >
+                {isPlayingVideo2 ? (
+                  <svg className="w-6 h-6 fill-current" viewBox="0 0 24 24">
+                    <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" />
+                  </svg>
+                ) : (
+                  <svg className="w-6 h-6 fill-current translate-x-0.5" viewBox="0 0 24 24">
+                    <path d="M8 5v14l11-7z" />
+                  </svg>
+                )}
+              </div>
+            </div>
+
+            <div className="absolute bottom-0 left-0 right-0 p-5 pt-8 z-10 flex flex-col justify-end">
+              {isPlayingVideo2 && (
+                <div className="flex items-end gap-1 mb-2.5">
+                  <span className="w-1 bg-[#FF4500] animate-soundwave-2" />
+                  <span className="w-1 bg-[#FF4500] animate-soundwave-1" />
+                  <span className="w-1 bg-white animate-soundwave-4" />
+                  <span className="w-1 bg-white animate-soundwave-3" />
+                  <span className="text-[11px] text-white/80 font-mono ml-2">0:18 / 0:32</span>
+                </div>
+              )}
+
+              <h3 className="text-white text-lg sm:text-xl font-bold tracking-tight">
+                Aisha Grant
+              </h3>
+              <p className="text-white/80 text-xs sm:text-sm font-medium">
+                Podcaster & Host
+              </p>
+
+              <div className="w-full h-1 bg-white/20 mt-3 overflow-hidden">
+                <div
+                  className={`h-full bg-[#FF4500] ${
+                    isPlayingVideo2 ? "w-1/2 transition-all duration-1000" : "w-1/5"
+                  }`}
+                />
+              </div>
+            </div>
+          </div>
+
+          {/* 4. ONE COLUMN ONLY -> FIGURE CARD (42M+) + 3:4 IMAGE CARD (EVAN BROOKS) */}
+          <div className="w-[270px] sm:w-[290px] h-[500px] sm:h-[520px] flex flex-col gap-3.5 flex-shrink-0">
+            {/* Top Figure Card (Purple - Rounded None) */}
+            <div className="relative h-[235px] sm:h-[245px] bg-[#6C5CE7] rounded-none p-6 sm:p-7 flex flex-col justify-between text-white overflow-hidden group cursor-pointer transition-transform duration-300">
+              <div className="absolute -top-16 -right-16 w-36 h-36 bg-white/10 rounded-full blur-2xl pointer-events-none" />
+
+              <div>
+                <span className="text-4xl sm:text-[44px] font-extrabold tracking-tight leading-none block">
+                  42M+
+                </span>
+              </div>
+              <p className="text-white/95 text-sm sm:text-[15px] font-medium leading-snug mt-auto max-w-[210px]">
+                Emails sent through Castly each month.
+              </p>
+            </div>
+
+            {/* Bottom 3:4 Image Card (Evan Brooks - Rounded None) */}
+            <div className="relative flex-1 bg-slate-800 rounded-none overflow-hidden group cursor-pointer transition-transform duration-300">
+              <Image
+                src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=800&auto=format&fit=crop&q=80"
+                alt="Evan Brooks - Content Creator"
+                fill
+                sizes="300px"
+                className="object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-transparent" />
+              
+              <div className="absolute bottom-0 left-0 right-0 p-5 z-10">
+                <h3 className="text-white text-base sm:text-lg font-bold tracking-tight">
+                  Evan Brooks
+                </h3>
+                <p className="text-white/80 text-xs sm:text-sm font-medium">
+                  Content Creator
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* 5. 9:16 VIDEO REEL - MARCUS VANCE */}
+          <div className="relative w-[270px] sm:w-[290px] h-[500px] sm:h-[520px] rounded-none overflow-hidden flex-shrink-0 bg-slate-900 group cursor-pointer transition-transform duration-300">
+            <Image
+              src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=900&auto=format&fit=crop&q=80"
+              alt="Marcus Vance - Agency Founder"
+              fill
+              sizes="300px"
+              className={`object-cover transition-transform duration-700 ${
+                isPlayingVideo3 ? "scale-105" : "scale-100"
+              } group-hover:scale-110`}
+            />
+
+            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/25 to-black/30" />
+
+            <div className="absolute top-4 left-4 right-4 flex items-center justify-between z-10">
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-black/60 backdrop-blur-md border border-white/15 text-[11px] font-medium text-white tracking-wide">
+                <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-ping" />
+                9:16 VIDEO
+              </span>
+
+              <button
+                type="button"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setIsMuted(!isMuted);
+                }}
+                className="w-7 h-7 bg-black/60 backdrop-blur-md border border-white/15 flex items-center justify-center text-white/90 hover:text-white transition-colors"
+              >
+                {isMuted ? (
+                  <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+                    <path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z" />
+                  </svg>
+                ) : (
+                  <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+                    <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z" />
+                  </svg>
+                )}
+              </button>
+            </div>
+
+            <div
+              onClick={() => setIsPlayingVideo3(!isPlayingVideo3)}
+              className="absolute inset-0 flex items-center justify-center z-10"
+            >
+              <div
+                className={`w-14 h-14 bg-white/25 backdrop-blur-md border border-white/40 flex items-center justify-center text-white transition-all duration-300 ${
+                  isPlayingVideo3
+                    ? "opacity-0 group-hover:opacity-100 scale-90 group-hover:scale-100"
+                    : "opacity-100 scale-100 bg-[#FF4500] border-transparent"
+                }`}
+              >
+                {isPlayingVideo3 ? (
+                  <svg className="w-6 h-6 fill-current" viewBox="0 0 24 24">
+                    <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" />
+                  </svg>
+                ) : (
+                  <svg className="w-6 h-6 fill-current translate-x-0.5" viewBox="0 0 24 24">
+                    <path d="M8 5v14l11-7z" />
+                  </svg>
+                )}
+              </div>
+            </div>
+
+            <div className="absolute bottom-0 left-0 right-0 p-5 pt-8 z-10 flex flex-col justify-end">
+              {isPlayingVideo3 && (
+                <div className="flex items-end gap-1 mb-2.5">
+                  <span className="w-1 bg-[#FF4500] animate-soundwave-3" />
+                  <span className="w-1 bg-[#FF4500] animate-soundwave-1" />
+                  <span className="w-1 bg-white animate-soundwave-2" />
+                  <span className="w-1 bg-white animate-soundwave-4" />
+                  <span className="text-[11px] text-white/80 font-mono ml-2">0:30 / 0:50</span>
+                </div>
+              )}
+
+              <h3 className="text-white text-lg sm:text-xl font-bold tracking-tight">
+                Marcus Vance
+              </h3>
+              <p className="text-white/80 text-xs sm:text-sm font-medium">
+                Agency Founder
+              </p>
+
+              <div className="w-full h-1 bg-white/20 mt-3 overflow-hidden">
+                <div
+                  className={`h-full bg-[#FF4500] ${
+                    isPlayingVideo3 ? "w-4/5 transition-all duration-1000" : "w-1/3"
+                  }`}
+                />
+              </div>
+            </div>
+          </div>
+
+          {/* 6. ONE COLUMN ONLY -> FIGURE CARD (10M+) + 3:4 IMAGE CARD (SOPHIA CHEN) */}
+          <div className="w-[270px] sm:w-[290px] h-[500px] sm:h-[520px] flex flex-col gap-3.5 flex-shrink-0">
+            {/* Top Figure Card (Green - Rounded None) */}
+            <div className="relative h-[235px] sm:h-[245px] bg-[#10B981] rounded-none p-6 sm:p-7 flex flex-col justify-between text-white overflow-hidden group cursor-pointer transition-transform duration-300">
+              <div className="absolute -top-16 -right-16 w-36 h-36 bg-white/10 rounded-full blur-2xl pointer-events-none" />
+
+              <div>
+                <span className="text-4xl sm:text-[44px] font-extrabold tracking-tight leading-none block">
+                  10M+
+                </span>
+              </div>
+              <p className="text-white/95 text-sm sm:text-[15px] font-medium leading-snug mt-auto max-w-[210px]">
+                Subscribers reached across active creator communities.
+              </p>
+            </div>
+
+            {/* Bottom 3:4 Image Card (Sophia Chen - Rounded None) */}
+            <div className="relative flex-1 bg-slate-800 rounded-none overflow-hidden group cursor-pointer transition-transform duration-300">
+              <Image
+                src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=800&auto=format&fit=crop&q=80"
+                alt="Sophia Chen - Creative Director"
+                fill
+                sizes="300px"
+                className="object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-transparent" />
+              
+              <div className="absolute bottom-0 left-0 right-0 p-5 z-10">
+                <h3 className="text-white text-base sm:text-lg font-bold tracking-tight">
+                  Sophia Chen
+                </h3>
+                <p className="text-white/80 text-xs sm:text-sm font-medium">
+                  Creative Director
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* 7. 9:16 VIDEO REEL - MAYA LIN */}
+          <div className="relative w-[270px] sm:w-[290px] h-[500px] sm:h-[520px] rounded-none overflow-hidden flex-shrink-0 bg-slate-900 group cursor-pointer transition-transform duration-300">
+            <Image
+              src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=900&auto=format&fit=crop&q=80"
+              alt="Maya Lin - Digital Strategist"
+              fill
+              sizes="300px"
+              className={`object-cover transition-transform duration-700 ${
+                isPlayingVideo4 ? "scale-105" : "scale-100"
+              } group-hover:scale-110`}
+            />
+
+            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/25 to-black/30" />
+
+            <div className="absolute top-4 left-4 right-4 flex items-center justify-between z-10">
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-black/60 backdrop-blur-md border border-white/15 text-[11px] font-medium text-white tracking-wide">
+                <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-ping" />
+                9:16 VIDEO
+              </span>
+
+              <button
+                type="button"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setIsMuted(!isMuted);
+                }}
+                className="w-7 h-7 bg-black/60 backdrop-blur-md border border-white/15 flex items-center justify-center text-white/90 hover:text-white transition-colors"
+              >
+                {isMuted ? (
+                  <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+                    <path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z" />
+                  </svg>
+                ) : (
+                  <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+                    <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z" />
+                  </svg>
+                )}
+              </button>
+            </div>
+
+            <div
+              onClick={() => setIsPlayingVideo4(!isPlayingVideo4)}
+              className="absolute inset-0 flex items-center justify-center z-10"
+            >
+              <div
+                className={`w-14 h-14 bg-white/25 backdrop-blur-md border border-white/40 flex items-center justify-center text-white transition-all duration-300 ${
+                  isPlayingVideo4
+                    ? "opacity-0 group-hover:opacity-100 scale-90 group-hover:scale-100"
+                    : "opacity-100 scale-100 bg-[#FF4500] border-transparent"
+                }`}
+              >
+                {isPlayingVideo4 ? (
+                  <svg className="w-6 h-6 fill-current" viewBox="0 0 24 24">
+                    <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" />
+                  </svg>
+                ) : (
+                  <svg className="w-6 h-6 fill-current translate-x-0.5" viewBox="0 0 24 24">
+                    <path d="M8 5v14l11-7z" />
+                  </svg>
+                )}
+              </div>
+            </div>
+
+            <div className="absolute bottom-0 left-0 right-0 p-5 pt-8 z-10 flex flex-col justify-end">
+              {isPlayingVideo4 && (
+                <div className="flex items-end gap-1 mb-2.5">
+                  <span className="w-1 bg-[#FF4500] animate-soundwave-1" />
+                  <span className="w-1 bg-[#FF4500] animate-soundwave-4" />
+                  <span className="w-1 bg-white animate-soundwave-2" />
+                  <span className="w-1 bg-white animate-soundwave-3" />
+                  <span className="text-[11px] text-white/80 font-mono ml-2">0:14 / 0:38</span>
+                </div>
+              )}
+
+              <h3 className="text-white text-lg sm:text-xl font-bold tracking-tight">
+                Maya Lin
+              </h3>
+              <p className="text-white/80 text-xs sm:text-sm font-medium">
+                Digital Strategist
+              </p>
+
+              <div className="w-full h-1 bg-white/20 mt-3 overflow-hidden">
+                <div
+                  className={`h-full bg-[#FF4500] ${
+                    isPlayingVideo4 ? "w-2/5 transition-all duration-1000" : "w-1/6"
+                  }`}
+                />
+              </div>
+            </div>
+          </div>
+
+          {/* 8. ONE COLUMN ONLY -> FIGURE CARD (3.8x) + 3:4 IMAGE CARD (DAVID KIM) */}
+          <div className="w-[270px] sm:w-[290px] h-[500px] sm:h-[520px] flex flex-col gap-3.5 flex-shrink-0">
+            {/* Top Figure Card (Orange - Rounded None) */}
+            <div className="relative h-[235px] sm:h-[245px] bg-[#FF5A1F] rounded-none p-6 sm:p-7 flex flex-col justify-between text-white overflow-hidden group cursor-pointer transition-transform duration-300">
+              <div className="absolute -top-16 -right-16 w-36 h-36 bg-white/10 rounded-full blur-2xl pointer-events-none" />
+
+              <div>
+                <span className="text-4xl sm:text-[44px] font-extrabold tracking-tight leading-none block">
+                  3.8x
+                </span>
+              </div>
+              <p className="text-white/95 text-sm sm:text-[15px] font-medium leading-snug mt-auto max-w-[210px]">
+                Average click-to-purchase boost from smart automation.
+              </p>
+            </div>
+
+            {/* Bottom 3:4 Image Card (David Kim - Rounded None) */}
+            <div className="relative flex-1 bg-slate-800 rounded-none overflow-hidden group cursor-pointer transition-transform duration-300">
+              <Image
+                src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=800&auto=format&fit=crop&q=80"
+                alt="David Kim - E-commerce Founder"
+                fill
+                sizes="300px"
+                className="object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-transparent" />
+              
+              <div className="absolute bottom-0 left-0 right-0 p-5 z-10">
+                <h3 className="text-white text-base sm:text-lg font-bold tracking-tight">
+                  David Kim
+                </h3>
+                <p className="text-white/80 text-xs sm:text-sm font-medium">
+                  E-commerce Founder
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* ================= CLONED SET FOR SEAMLESS INFINITE LOOP (SAME REEL -> 1 COLUMN PATTERN) ================= */}
+
+          {/* 1 CLONE: 9:16 VIDEO REEL */}
+          <div className="relative w-[270px] sm:w-[290px] h-[500px] sm:h-[520px] rounded-none overflow-hidden flex-shrink-0 bg-slate-900 group cursor-pointer transition-transform duration-300">
+            <Image
+              src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=900&auto=format&fit=crop&q=80"
+              alt="Noah Wilson - SaaS Consultant"
+              fill
+              sizes="300px"
+              className="object-cover transition-transform duration-700 group-hover:scale-110"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/25 to-black/30" />
+            <div className="absolute top-4 left-4 right-4 flex items-center justify-between z-10">
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-black/60 backdrop-blur-md border border-white/15 text-[11px] font-medium text-white tracking-wide">
+                <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-ping" />
+                9:16 VIDEO
+              </span>
+            </div>
+            <div className="absolute bottom-0 left-0 right-0 p-5 pt-8 z-10 flex flex-col justify-end">
+              <h3 className="text-white text-lg sm:text-xl font-bold tracking-tight">
+                Noah Wilson
+              </h3>
+              <p className="text-white/80 text-xs sm:text-sm font-medium">
+                SaaS Consultant
+              </p>
+              <div className="w-full h-1 bg-white/20 mt-3 overflow-hidden">
+                <div className="h-full bg-[#FF4500] w-3/5" />
+              </div>
+            </div>
+          </div>
+
+          {/* 2 CLONE: 1 COLUMN ONLY ($500M+ & Ryan Mitchell) */}
+          <div className="w-[270px] sm:w-[290px] h-[500px] sm:h-[520px] flex flex-col gap-3.5 flex-shrink-0">
+            <div className="relative h-[235px] sm:h-[245px] bg-[#0062FF] rounded-none p-6 sm:p-7 flex flex-col justify-between text-white overflow-hidden group cursor-pointer transition-transform duration-300">
+              <div>
+                <span className="text-4xl sm:text-[44px] font-extrabold tracking-tight leading-none block">
+                  $500M+
+                </span>
+              </div>
+              <p className="text-white/95 text-sm sm:text-[15px] font-medium leading-snug mt-auto max-w-[210px]">
+                Creator revenue influenced by Castly email campaigns.
+              </p>
+            </div>
+
+            <div className="relative flex-1 bg-slate-800 rounded-none overflow-hidden group cursor-pointer transition-transform duration-300">
+              <Image
+                src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=800&auto=format&fit=crop&q=80"
+                alt="Ryan Mitchell - Fitness & Coaching"
+                fill
+                sizes="300px"
+                className="object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-transparent" />
+              <div className="absolute bottom-0 left-0 right-0 p-5 z-10">
+                <h3 className="text-white text-base sm:text-lg font-bold tracking-tight">
+                  Ryan Mitchell
+                </h3>
+                <p className="text-white/80 text-xs sm:text-sm font-medium">
+                  Fitness & Coaching
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* 3 CLONE: 9:16 VIDEO REEL */}
+          <div className="relative w-[270px] sm:w-[290px] h-[500px] sm:h-[520px] rounded-none overflow-hidden flex-shrink-0 bg-slate-900 group cursor-pointer transition-transform duration-300">
+            <Image
+              src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=900&auto=format&fit=crop&q=80"
+              alt="Aisha Grant - Podcaster"
+              fill
+              sizes="300px"
+              className="object-cover transition-transform duration-700 group-hover:scale-110"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/25 to-black/30" />
+            <div className="absolute top-4 left-4 right-4 flex items-center justify-between z-10">
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-black/60 backdrop-blur-md border border-white/15 text-[11px] font-medium text-white tracking-wide">
+                <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-ping" />
+                9:16 VIDEO
+              </span>
+            </div>
+            <div className="absolute bottom-0 left-0 right-0 p-5 pt-8 z-10 flex flex-col justify-end">
+              <h3 className="text-white text-lg sm:text-xl font-bold tracking-tight">
+                Aisha Grant
+              </h3>
+              <p className="text-white/80 text-xs sm:text-sm font-medium">
+                Podcaster & Host
+              </p>
+              <div className="w-full h-1 bg-white/20 mt-3 overflow-hidden">
+                <div className="h-full bg-[#FF4500] w-1/2" />
+              </div>
+            </div>
+          </div>
+
+          {/* 4 CLONE: 1 COLUMN ONLY (42M+ & Evan Brooks) */}
+          <div className="w-[270px] sm:w-[290px] h-[500px] sm:h-[520px] flex flex-col gap-3.5 flex-shrink-0">
+            <div className="relative h-[235px] sm:h-[245px] bg-[#6C5CE7] rounded-none p-6 sm:p-7 flex flex-col justify-between text-white overflow-hidden group cursor-pointer transition-transform duration-300">
+              <div>
+                <span className="text-4xl sm:text-[44px] font-extrabold tracking-tight leading-none block">
+                  42M+
+                </span>
+              </div>
+              <p className="text-white/95 text-sm sm:text-[15px] font-medium leading-snug mt-auto max-w-[210px]">
+                Emails sent through Castly each month.
+              </p>
+            </div>
+
+            <div className="relative flex-1 bg-slate-800 rounded-none overflow-hidden group cursor-pointer transition-transform duration-300">
+              <Image
+                src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=800&auto=format&fit=crop&q=80"
+                alt="Evan Brooks - Content Creator"
+                fill
+                sizes="300px"
+                className="object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-transparent" />
+              <div className="absolute bottom-0 left-0 right-0 p-5 z-10">
+                <h3 className="text-white text-base sm:text-lg font-bold tracking-tight">
+                  Evan Brooks
+                </h3>
+                <p className="text-white/80 text-xs sm:text-sm font-medium">
+                  Content Creator
+                </p>
+              </div>
+            </div>
+          </div>
+
+        </div>
       </div>
     </section>
   );

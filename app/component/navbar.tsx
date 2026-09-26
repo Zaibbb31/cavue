@@ -46,17 +46,43 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Lock body scroll and close on route change when mobile menu is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isOpen]);
+
+  useEffect(() => {
+    setIsOpen(false);
+  }, [pathname]);
+
   return (
-    <header
-      className={`w-full sticky top-0 z-50 flex justify-center transform-gpu transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] ${
-        isScrolled
-          ? "pt-3 sm:pt-4 px-4"
-          : "pt-2.5 sm:pt-4 px-4 sm:px-6 lg:px-8 max-w-8xl mx-auto"
-      }`}
-    >
+    <>
+      {/* Full-screen backdrop blur when mobile dropdown is open */}
+      <div
+        onClick={() => setIsOpen(false)}
+        className={`fixed inset-0 bg-black/40 backdrop-blur-md transition-opacity duration-300 md:hidden z-40 ${
+          isOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+        }`}
+        aria-hidden="true"
+      />
+
+      <header
+        className={`w-full sticky top-0 z-50 flex justify-center transform-gpu transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+          isScrolled
+            ? "pt-3 sm:pt-4 px-4"
+            : "pt-2.5 sm:pt-4 px-4 sm:px-6 lg:px-8 max-w-8xl mx-auto"
+        }`}
+      >
       {/* Floating Navbar Container with Ultra Smooth Width Shrink */}
       <nav
-        className={`transform-gpu will-change-[max-width,width,padding,background-color,border-color,box-shadow] transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+        className={`relative transform-gpu will-change-[max-width,width,padding,background-color,border-color,box-shadow] transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] ${
           isScrolled
             ? "w-full max-w-[720px] lg:max-w-[760px] px-4 sm:px-6 md:px-7 py-1 rounded-none shadow-[0_8px_32px_rgba(0,0,0,0.08)] backdrop-blur-md bg-white/[0.18] border border-white/40 text-[#0C3852]"
             : "w-full max-w-[1536px] px-4 sm:px-6 md:px-8 py-0.5 sm:py-1 rounded-none shadow-none bg-[#0C4568] border border-transparent text-white"
@@ -170,13 +196,13 @@ export default function Navbar() {
           </div>
         </div>
 
-        {/* Mobile Menu Dropdown */}
+        {/* Mobile Menu Dropdown: Absolutely positioned to avoid shifting page content */}
         {isOpen && (
           <div
-            className={`md:hidden border-t px-2 pt-3 pb-5 space-y-3 transition-all duration-500 ${
+            className={`md:hidden absolute top-full left-0 right-0 border-t px-4 pt-3 pb-5 space-y-3 transition-all duration-300 z-50 shadow-2xl ${
               isScrolled
-                ? "border-black/10 bg-white/80 backdrop-blur-lg"
-                : "border-white/15 bg-transparent"
+                ? "mt-2 border-black/10 bg-white/95 backdrop-blur-xl text-[#0C3852]"
+                : "border-white/15 bg-[#0C4568] text-white"
             }`}
           >
             <div className="flex flex-col space-y-2">
@@ -223,5 +249,6 @@ export default function Navbar() {
         )}
       </nav>
     </header>
+    </>
   );
 }
