@@ -114,9 +114,8 @@ export default function ServicesPage() {
             {/* Left Column: Huge Headline & CTA */}
             <div className="lg:col-span-7 flex flex-col">
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[56px] xl:text-[62px] font-medium text-[#0C3852] tracking-tight leading-[1.08] mb-8 sm:mb-10">
-                Everything you need <br />
-                to grow on social — <br />
-                done for you
+                Everything Your <br />
+                Brand Needs
               </h1>
 
               <div>
@@ -132,8 +131,7 @@ export default function ServicesPage() {
             {/* Right Column: Paragraph Copy & Meta List */}
             <div className="lg:col-span-5 flex flex-col justify-start lg:pt-2">
               <p className="text-[#38607A] text-base sm:text-lg md:text-[19px] leading-relaxed mb-8 sm:mb-10">
-                We handle the strategy, execution, and optimization — so you can
-                focus on your business.
+                From branding and content to digital and performance, we bring clarity to every stage of your brand’s journey.
               </p>
 
               {/* Meta Specs Table */}

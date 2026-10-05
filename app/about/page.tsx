@@ -117,12 +117,11 @@ export default function AboutPage() {
               / ABOUT CAVUE
             </span>
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-[66px] font-medium text-[#0C3852] tracking-[-0.03em] leading-[1.06]">
-              Where Creators Build <br className="hidden sm:inline" />
-              Audiences That Last
+              We Build What Fits <br /> Your Brand.
             </h1>
             <p className="mt-5 sm:mt-7 text-slate-600 text-base sm:text-lg md:text-[19px] leading-relaxed max-w-2xl mx-auto font-normal">
-              We built Cavue to help creators own their audience, strengthen their voice,
-              and grow without depending on changing algorithms or rented platforms.
+              From strategy to storytelling, we create thoughtful digital solutions shaped around your goals, audience and stage of growth.
+
             </p>
           </div>
 
@@ -130,17 +129,17 @@ export default function AboutPage() {
           <div className="relative w-full max-w-7xl mx-auto flex items-center justify-center pt-4 sm:pt-8 pb-10">
             <div className="flex flex-wrap lg:flex-nowrap items-center justify-center -space-y-4 lg:space-y-0 lg:-space-x-5 xl:-space-x-8">
               
-              {/* CARD 1: Dark Navy Blue (#0C3852) - 20M+ Emails Delivered */}
+              {/* CARD 1: Dark Navy Blue (#0C3852) - CAVUE Meaning */}
               <div className="relative w-[280px] sm:w-[310px] md:w-[325px] h-[390px] sm:h-[430px] md:h-[460px] bg-[#0C3852] text-white p-7 sm:p-8 flex flex-col justify-between transform -rotate-4 sm:-rotate-6 hover:rotate-0 hover:scale-105 hover:z-40 transition-all duration-500 z-10 group cursor-pointer">
                 <div className="absolute top-0 right-0 w-44 h-44 bg-white/5 rounded-full blur-2xl pointer-events-none" />
                 <div>
                   <h3 className="text-2xl sm:text-3xl font-medium tracking-tight leading-tight">
-                    20M+ Emails <br />
-                    Delivered
+                    Ceiling And <br />
+                    Visibility Unlimited
                   </h3>
                 </div>
-                <p className="text-white/85 text-xs sm:text-sm md:text-[15px] font-normal leading-relaxed mt-auto max-w-[240px]">
-                  Messages sent with purpose. Helping creators reach inboxes, not spam folders.
+                <p className="text-white/85 text-[11px] sm:text-xs md:text-[13px] font-normal leading-relaxed mt-auto max-w-full">
+                  CAVUE takes its name from CAVU: “Ceiling And Visibility Unlimited,” an aviation term that describes the clearest conditions to fly. CAVUE is a tribute to our aviation roots and a reflection of our passion for creating brands with clarity, direction and limitless possibility.
                 </p>
               </div>
 
@@ -163,17 +162,16 @@ export default function AboutPage() {
                 </div>
               </div>
 
-              {/* CARD 3: Bright Accent Blue (#348DBF) - 30+ Countries Served */}
+              {/* CARD 3: Bright Accent Blue (#348DBF) - Agency Partner */}
               <div className="relative w-[280px] sm:w-[310px] md:w-[325px] h-[390px] sm:h-[430px] md:h-[460px] bg-[#348DBF] text-white p-7 sm:p-8 flex flex-col justify-between transform rotate-2 sm:rotate-3 hover:rotate-0 hover:scale-105 hover:z-40 transition-all duration-500 z-30 group cursor-pointer">
                 <div className="absolute top-0 right-0 w-44 h-44 bg-white/10 rounded-full blur-2xl pointer-events-none" />
                 <div>
-                  <h3 className="text-2xl sm:text-3xl font-extrabold tracking-tight leading-tight">
-                    30+ Countries <br />
-                    Served
+                  <h3 className="text-xl sm:text-2xl font-extrabold tracking-tight leading-tight pr-4">
+                    You Don’t Need Another Agency. You Need Someone in Your Corner.
                   </h3>
                 </div>
-                <p className="text-white/95 text-xs sm:text-sm md:text-[15px] font-normal leading-relaxed mt-auto max-w-[240px]">
-                  Creators across the globe trust Cavue from solo founders to growing teams.
+                <p className="text-white/95 text-[11px] sm:text-xs md:text-[13px] font-normal leading-relaxed mt-auto max-w-full">
+                  We deliberately keep our roster for selected brands so we can stay close to the brands we work with. We become an extension of your team, bringing hands-on expertise, personal attention and clear direction to brands navigating the shift from traditional to digital, doing it all themselves, or building something entirely new.
                 </p>
               </div>
 
@@ -228,21 +226,18 @@ export default function AboutPage() {
               className="flex items-center gap-4 overflow-x-auto pb-6 pt-2 snap-x snap-mandatory scroll-smooth cursor-grab active:cursor-grabbing px-2"
               style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
             >
-              {/* CARD 0: Orange Accent Card */}
+              {/* CARD 0: Orange Accent Card - Agency Partner */}
               <div
                 onClick={() => scrollToCard(0)}
                 className={`relative w-[260px] h-[330px] bg-[#FF4F18] text-white p-6 flex flex-col justify-end shadow-md flex-shrink-0 snap-center transition-all duration-300 cursor-pointer ${
                   activeCard === 0 ? "scale-100 ring-2 ring-[#FF4F18]/50 shadow-xl" : "scale-[0.98] opacity-90"
                 }`}
               >
-                <span className="text-xs uppercase font-bold tracking-wider text-white/80 mb-2 block">
-                  Direct Reach
-                </span>
-                <h3 className="text-2xl font-bold tracking-tight text-white leading-tight">
-                  Empowering creators to own their reach
+                <h3 className="text-[17px] font-bold tracking-tight text-white leading-tight mb-2">
+                  You Don’t Need Another Agency. You Need Someone in Your Corner.
                 </h3>
-                <p className="text-white/90 text-xs mt-2.5 leading-relaxed">
-                  No algorithms, no gatekeepers. Direct connection to your community.
+                <p className="text-white/90 text-[10px] mt-2.5 leading-relaxed">
+                  We deliberately keep our roster for selected brands so we can stay close to the brands we work with. We become an extension of your team, bringing hands-on expertise, personal attention and clear direction to brands navigating the shift from traditional to digital, doing it all themselves, or building something entirely new.
                 </p>
               </div>
 
@@ -263,7 +258,7 @@ export default function AboutPage() {
                 />
               </div>
 
-              {/* CARD 2: Dark Navy Stat Card - 20M+ Delivered */}
+              {/* CARD 2: Dark Navy Stat Card - CAVUE Meaning */}
               <div
                 onClick={() => scrollToCard(2)}
                 className={`relative w-[260px] h-[330px] bg-[#111827] text-white p-6 flex flex-col justify-between shadow-md flex-shrink-0 snap-center transition-all duration-300 cursor-pointer ${
@@ -271,15 +266,13 @@ export default function AboutPage() {
                 }`}
               >
                 <div>
-                  <h3 className="text-3xl font-bold tracking-tight text-white leading-none">
-                    20M+
+                  <h3 className="text-xl font-bold tracking-tight text-white leading-tight">
+                    Ceiling And <br />
+                    Visibility Unlimited
                   </h3>
-                  <span className="text-xl font-semibold tracking-tight text-white/95 block mt-2">
-                    Delivered
-                  </span>
                 </div>
-                <p className="text-white/80 text-xs leading-relaxed mt-auto">
-                  Messages sent with purpose by creators, not spam.
+                <p className="text-white/80 text-[10px] leading-relaxed mt-auto">
+                  CAVUE takes its name from CAVU: “Ceiling And Visibility Unlimited,” an aviation term that describes the clearest conditions to fly. CAVUE is a tribute to our aviation roots and a reflection of our passion for creating brands with clarity, direction and limitless possibility.
                 </p>
               </div>
 
@@ -359,8 +352,7 @@ export default function AboutPage() {
           {/* Centered Main Headline */}
           <div className="text-center max-w-4xl mx-auto mb-20 sm:mb-24 md:mb-28">
             <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-[54px] font-medium text-[#0C3852] tracking-tight leading-[1.12]">
-              Empowering Creators With <br className="hidden sm:inline" />
-              Tools That Truly Matter
+              Our Mission & Our Vision
             </h2>
           </div>
 
@@ -385,69 +377,12 @@ export default function AboutPage() {
                 <h3 className="text-3xl sm:text-4xl md:text-[42px] font-bold text-[#111827] tracking-tight mb-4 sm:mb-5">
                   Our Mission
                 </h3>
-                <p className="text-slate-600 text-base sm:text-lg leading-relaxed mb-7 sm:mb-9 font-normal">
-                  Our mission is to help creators build meaningful, long-lasting relationships with their audience through simple, intuitive email tools.
+                <h4 className="text-xl sm:text-2xl font-semibold text-[#0C3852] mb-3">
+                  Create with clarity. Move with purpose.
+                </h4>
+                <p className="text-slate-600 text-base sm:text-lg leading-relaxed font-normal">
+                  We work closely with a group of brands to bring clarity to their challenges, creativity to their communication and momentum to their growth.
                 </p>
-
-                {/* Bullet Points */}
-                <div className="space-y-4 sm:space-y-4.5">
-                  <div className="flex items-start gap-3.5">
-                    <svg
-                      className="w-4 h-4 text-[#111827] flex-shrink-0 mt-1"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2.5"
-                      strokeLinecap="round"
-                    >
-                      <line x1="12" y1="2" x2="12" y2="22" />
-                      <line x1="2" y1="12" x2="22" y2="12" />
-                      <line x1="4.93" y1="4.93" x2="19.07" y2="19.07" />
-                      <line x1="4.93" y1="19.07" x2="19.07" y2="4.93" />
-                    </svg>
-                    <span className="text-[#1F2937] text-sm sm:text-base font-normal leading-normal">
-                      Make email marketing effortless for everyone
-                    </span>
-                  </div>
-
-                  <div className="flex items-start gap-3.5">
-                    <svg
-                      className="w-4 h-4 text-[#111827] flex-shrink-0 mt-1"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2.5"
-                      strokeLinecap="round"
-                    >
-                      <line x1="12" y1="2" x2="12" y2="22" />
-                      <line x1="2" y1="12" x2="22" y2="12" />
-                      <line x1="4.93" y1="4.93" x2="19.07" y2="19.07" />
-                      <line x1="4.93" y1="19.07" x2="19.07" y2="4.93" />
-                    </svg>
-                    <span className="text-[#1F2937] text-sm sm:text-base font-normal leading-normal">
-                      Deliver powerful automation without complexity
-                    </span>
-                  </div>
-
-                  <div className="flex items-start gap-3.5">
-                    <svg
-                      className="w-4 h-4 text-[#111827] flex-shrink-0 mt-1"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2.5"
-                      strokeLinecap="round"
-                    >
-                      <line x1="12" y1="2" x2="12" y2="22" />
-                      <line x1="2" y1="12" x2="22" y2="12" />
-                      <line x1="4.93" y1="4.93" x2="19.07" y2="19.07" />
-                      <line x1="4.93" y1="19.07" x2="19.07" y2="4.93" />
-                    </svg>
-                    <span className="text-[#1F2937] text-sm sm:text-base font-normal leading-normal">
-                      Give creators full ownership of their data and growth
-                    </span>
-                  </div>
-                </div>
               </div>
 
             </div>
@@ -460,50 +395,12 @@ export default function AboutPage() {
                 <h3 className="text-3xl sm:text-4xl md:text-[42px] font-bold text-[#111827] tracking-tight mb-4 sm:mb-5">
                   Our Vision
                 </h3>
-                <p className="text-slate-600 text-base sm:text-lg leading-relaxed mb-7 sm:mb-9 font-normal">
-                  We envision a world where creators can grow without relying on unpredictable algorithms or rented platforms.
+                <h4 className="text-xl sm:text-2xl font-semibold text-[#0C3852] mb-3">
+                  No ceiling. Unlimited visibility.
+                </h4>
+                <p className="text-slate-600 text-base sm:text-lg leading-relaxed font-normal">
+                  Inspired by Ceiling And Visibility Unlimited, we want to create a world where brands have the clarity to see what's possible and the creative courage to go there.
                 </p>
-
-                {/* Bullet Points */}
-                <div className="space-y-4 sm:space-y-4.5">
-                  <div className="flex items-start gap-3.5">
-                    <svg
-                      className="w-4 h-4 text-[#111827] flex-shrink-0 mt-1"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2.5"
-                      strokeLinecap="round"
-                    >
-                      <line x1="12" y1="2" x2="12" y2="22" />
-                      <line x1="2" y1="12" x2="22" y2="12" />
-                      <line x1="4.93" y1="4.93" x2="19.07" y2="19.07" />
-                      <line x1="4.93" y1="19.07" x2="19.07" y2="4.93" />
-                    </svg>
-                    <span className="text-[#1F2937] text-sm sm:text-base font-normal leading-normal">
-                      Build accessible, scalable tools that support real growth.
-                    </span>
-                  </div>
-
-                  <div className="flex items-start gap-3.5">
-                    <svg
-                      className="w-4 h-4 text-[#111827] flex-shrink-0 mt-1"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2.5"
-                      strokeLinecap="round"
-                    >
-                      <line x1="12" y1="2" x2="12" y2="22" />
-                      <line x1="2" y1="12" x2="22" y2="12" />
-                      <line x1="4.93" y1="4.93" x2="19.07" y2="19.07" />
-                      <line x1="4.93" y1="19.07" x2="19.07" y2="4.93" />
-                    </svg>
-                    <span className="text-[#1F2937] text-sm sm:text-base font-normal leading-normal">
-                      Empower creators to communicate with clarity and confidence with their client
-                    </span>
-                  </div>
-                </div>
               </div>
 
               {/* Right Column: Image */}

@@ -127,13 +127,12 @@ export default function ProjectPage() {
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 sm:mb-16">
             <div>
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[56px] font-medium text-[#0C3852] tracking-tight leading-[1.08]">
-                Crafting iconic brands <br className="hidden sm:inline" />
-                that command attention
+                Brands We’ve Built With. <br className="hidden sm:inline" />
+                A Little of What We Do.
               </h1>
             </div>
-            <p className="text-[#38607A] text-sm sm:text-base md:text-[17px] max-w-md leading-relaxed">
-              Explore our featured case studies spanning social media growth,
-              high-impact creative direction, and performance-driven campaigns.
+            <p className="text-[#38607A] text-sm sm:text-base md:text-[17px] max-w-xl leading-relaxed">
+              Every brand has a different story to tell. Here’s a look at some of the brands, ideas and experiences we’ve helped bring to life. Different industries. Different challenges. Different ways of thinking. Here’s some of our work.
             </p>
           </div>
 
