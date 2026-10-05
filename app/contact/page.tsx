@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import Navbar from "../component/navbar";
 import FAQSection from "../component/faq";
 import Footer from "../component/footer";
+import { Phone, Mail, MapPin } from "lucide-react";
 
 export default function ContactPage() {
   const [fullName, setFullName] = useState("");
@@ -58,29 +59,67 @@ export default function ContactPage() {
 
               {/* Main Headline */}
               <h1 className="text-4xl sm:text-5xl lg:text-[58px] xl:text-[64px] font-medium text-black tracking-tight leading-[1.08] mb-4 sm:mb-6">
-                Start the <br />
-                Conversation
+                Your Next Move Starts Here.
               </h1>
 
               {/* Description */}
-              <p className="text-[#555555] text-base sm:text-lg md:text-[19px] leading-relaxed max-w-sm">
-                We focus on what matters — engagement, leads, and revenue.
+              <p className="text-[#555555] text-base sm:text-lg md:text-[19px] leading-relaxed max-w-sm mb-10">
+                Tell us where you’re headed. We’ll help you find the clearest way there.
               </p>
+
+              {/* Contact Details List */}
+              <div className="flex flex-col gap-8">
+                {/* Phone */}
+                <div className="flex items-start gap-4">
+                  <div className="bg-white shadow-[0_2px_10px_rgba(0,0,0,0.06)] rounded-full w-[52px] h-[52px] flex items-center justify-center shrink-0 border border-black/[0.04]">
+                    <Phone className="w-[22px] h-[22px] text-[#0C3852]" strokeWidth={1.5} />
+                  </div>
+                  <div className="flex flex-col pt-0.5">
+                    <span className="text-[12px] font-semibold text-[#6B7280] tracking-wider uppercase mb-1">Phone Number</span>
+                    <span className="text-[18px] font-medium text-[#111827] mb-0.5">+91 92115 44533</span>
+                    <span className="text-[14px] text-[#6B7280]">Monday to Friday, 9:00 AM – 6:00 PM IST</span>
+                  </div>
+                </div>
+
+                {/* Email */}
+                <div className="flex items-start gap-4">
+                  <div className="bg-white shadow-[0_2px_10px_rgba(0,0,0,0.06)] rounded-full w-[52px] h-[52px] flex items-center justify-center shrink-0 border border-black/[0.04]">
+                    <Mail className="w-[22px] h-[22px] text-[#0C3852]" strokeWidth={1.5} />
+                  </div>
+                  <div className="flex flex-col pt-0.5">
+                    <span className="text-[12px] font-semibold text-[#6B7280] tracking-wider uppercase mb-1">Email Address</span>
+                    <span className="text-[18px] font-medium text-[#111827] mb-0.5">Palak@cavue.in</span>
+                    <span className="text-[14px] text-[#6B7280]">We reply within 24 hours on working days</span>
+                  </div>
+                </div>
+
+                {/* Location */}
+                <div className="flex items-start gap-4">
+                  <div className="bg-white shadow-[0_2px_10px_rgba(0,0,0,0.06)] rounded-full w-[52px] h-[52px] flex items-center justify-center shrink-0 border border-black/[0.04]">
+                    <MapPin className="w-[22px] h-[22px] text-[#0C3852]" strokeWidth={1.5} />
+                  </div>
+                  <div className="flex flex-col pt-0.5">
+                    <span className="text-[12px] font-semibold text-[#6B7280] tracking-wider uppercase mb-1">Office Location</span>
+                    <span className="text-[18px] font-medium text-[#111827] mb-0.5">[Your Office Address]</span>
+                    <span className="text-[14px] text-[#6B7280]">[City, State, PIN]</span>
+                  </div>
+                </div>
+              </div>
             </div>
 
             {/* Right Column: Interactive White Form Card */}
-            <div className="lg:col-span-7">
-              <div className="bg-white border border-[#0C4568] p-6 sm:p-10 shadow-sm">
-                <form onSubmit={handleSubmit} className="space-y-6">
+            <div className="lg:col-span-7 w-full max-w-5xl">
+              <div className="pt-2">
+                <form onSubmit={handleSubmit} className="space-y-10 sm:space-y-12">
                   {/* Row 1: Full Name & Email Address */}
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 sm:gap-12">
                     {/* Full Name */}
-                    <div className="flex flex-col space-y-2">
+                    <div className="flex flex-col">
                       <label
                         htmlFor="fullName"
-                        className="text-xs sm:text-sm font-medium text-black"
+                        className="text-[11px] sm:text-[12px] font-semibold text-[#6B7280] tracking-wider uppercase mb-2"
                       >
-                        Full Name
+                        Your Name
                       </label>
                       <input
                         id="fullName"
@@ -88,18 +127,17 @@ export default function ContactPage() {
                         required
                         value={fullName}
                         onChange={(e) => setFullName(e.target.value)}
-                        placeholder="John Doe"
-                        className="w-full px-5 py-3.5 bg-[#FFFFFF] text-black placeholder-[#9CA3AF] text-sm sm:text-base border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#0C4568] transition-all"
+                        className="w-full bg-transparent border-b border-[#D1D5DB] pb-3 text-[15px] sm:text-[16px] text-black focus:outline-none focus:border-[#AD4567] transition-colors"
                       />
                     </div>
 
                     {/* Email Address */}
-                    <div className="flex flex-col space-y-2">
+                    <div className="flex flex-col">
                       <label
                         htmlFor="email"
-                        className="text-xs sm:text-sm font-medium text-black"
+                        className="text-[11px] sm:text-[12px] font-semibold text-[#6B7280] tracking-wider uppercase mb-2"
                       >
-                        Email Address
+                        Email
                       </label>
                       <input
                         id="email"
@@ -107,17 +145,16 @@ export default function ContactPage() {
                         required
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
-                        placeholder="johndoe@gmail.com"
-                        className="w-full px-5 py-3.5 bg-[#FFFFFF] text-black placeholder-[#9CA3AF] text-sm sm:text-base border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#0C4568] transition-all"
+                        className="w-full bg-transparent border-b border-[#D1D5DB] pb-3 text-[15px] sm:text-[16px] text-black focus:outline-none focus:border-[#AD4567] transition-colors"
                       />
                     </div>
                   </div>
 
                   {/* Row 2: Social Budget */}
-                  <div className="flex flex-col space-y-2">
+                  <div className="flex flex-col">
                     <label
                       htmlFor="budget"
-                      className="text-xs sm:text-sm font-medium text-black"
+                      className="text-[11px] sm:text-[12px] font-semibold text-[#6B7280] tracking-wider uppercase mb-2"
                     >
                       Social Budget
                     </label>
@@ -126,17 +163,17 @@ export default function ContactPage() {
                         id="budget"
                         value={budget}
                         onChange={(e) => setBudget(e.target.value)}
-                        className="w-full appearance-none px-5 py-3.5 bg-[#FFFFFF] text-black text-sm sm:text-base border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#0C4568] transition-all cursor-pointer"
+                        className={`w-full appearance-none bg-transparent border-b border-[#D1D5DB] pb-3 text-[15px] sm:text-[16px] focus:outline-none focus:border-[#AD4567] transition-colors cursor-pointer ${!budget ? "text-[#9CA3AF]" : "text-black"}`}
                       >
                         <option value="" disabled className="text-gray-400">
-                          Select an amount
+                          e.g. $1,000 - $3,000 / month
                         </option>
-                        <option value="1k-3k">$1,000 – $3,000 / month</option>
-                        <option value="3k-5k">$3,000 – $5,000 / month</option>
-                        <option value="5k-10k">$5,000 – $10,000 / month</option>
-                        <option value="10k+">$10,000+ / month</option>
+                        <option value="1k-3k" className="text-black">$1,000 – $3,000 / month</option>
+                        <option value="3k-5k" className="text-black">$3,000 – $5,000 / month</option>
+                        <option value="5k-10k" className="text-black">$5,000 – $10,000 / month</option>
+                        <option value="10k+" className="text-black">$10,000+ / month</option>
                       </select>
-                      <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-gray-500">
+                      <div className="pointer-events-none absolute inset-y-0 right-0 top-0 bottom-3 flex items-center text-gray-400">
                         <svg
                           className="w-4 h-4 fill-none stroke-current stroke-2"
                           viewBox="0 0 24 24"
@@ -152,9 +189,9 @@ export default function ContactPage() {
                   </div>
 
                   {/* Row 3: Services Selection */}
-                  <div className="flex flex-col space-y-2.5">
-                    <label className="text-xs sm:text-sm font-medium text-black">
-                      What services are you interested in?
+                  <div className="flex flex-col space-y-4">
+                    <label className="text-[11px] sm:text-[12px] font-semibold text-[#6B7280] tracking-wider uppercase">
+                      Services Interested In
                     </label>
                     <div className="flex flex-wrap gap-3">
                       {servicesList.map((service) => {
@@ -166,19 +203,19 @@ export default function ContactPage() {
                             onClick={() => toggleService(service)}
                             className={`inline-flex items-center gap-2.5 px-4 sm:px-5 py-2.5 rounded-full text-xs sm:text-sm font-medium transition-all duration-200 cursor-pointer ${
                               isSelected
-                                ? "bg-[#0C4568] text-white shadow-sm border border-[#0C4568]"
-                                : "bg-[#FFFFFF] text-black border border-gray-200 hover:bg-gray-50"
+                                ? "bg-[#AD4567] text-white shadow-sm border border-[#AD4567]"
+                                : "bg-transparent text-[#4B5563] border border-[#D1D5DB] hover:border-gray-400"
                             }`}
                           >
                             <span
                               className={`w-4 h-4 rounded-full border flex items-center justify-center transition-colors ${
                                 isSelected
                                   ? "border-white bg-white"
-                                  : "border-gray-400 bg-white"
+                                  : "border-[#9CA3AF] bg-transparent"
                               }`}
                             >
                               {isSelected && (
-                                <span className="w-1.5 h-1.5 rounded-full bg-[#0C4568]" />
+                                <span className="w-1.5 h-1.5 rounded-full bg-[#AD4567]" />
                               )}
                             </span>
                             {service}
@@ -189,31 +226,39 @@ export default function ContactPage() {
                   </div>
 
                   {/* Row 4: Message */}
-                  <div className="flex flex-col space-y-2">
+                  <div className="flex flex-col">
                     <label
                       htmlFor="message"
-                      className="text-xs sm:text-sm font-medium text-black"
+                      className="text-[11px] sm:text-[12px] font-semibold text-[#6B7280] tracking-wider uppercase mb-2"
                     >
-                      Message
+                      Tell us a little more
                     </label>
                     <textarea
                       id="message"
-                      rows={5}
+                      rows={1}
                       required
                       value={message}
                       onChange={(e) => setMessage(e.target.value)}
-                      placeholder="Tell us about your business"
-                      className="w-full px-5 py-4 bg-[#FFFFFF] text-black placeholder-[#9CA3AF] text-sm sm:text-base border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#0C4568] resize-none transition-all"
+                      placeholder="A sentence or two is enough."
+                      className="w-full bg-transparent border-b border-[#D1D5DB] pb-3 pt-1 text-[15px] sm:text-[16px] text-black placeholder-[#9CA3AF] focus:outline-none focus:border-[#AD4567] resize-none transition-colors"
                     />
+                  </div>
+                  
+                  {/* Consent Checkbox */}
+                  <div className="flex items-center gap-3 pt-2">
+                     <input type="checkbox" id="consent" required className="w-4 h-4 rounded border-gray-300 text-[#AD4567] focus:ring-[#AD4567] cursor-pointer" />
+                     <label htmlFor="consent" className="text-[13px] sm:text-[14px] text-[#6B7280] cursor-pointer">
+                       I understand that sending this does not create a binding contract.
+                     </label>
                   </div>
 
                   {/* Submit Button */}
                   <div className="pt-2">
                     <button
                       type="submit"
-                      className="w-full inline-flex items-center justify-center px-7 py-3.5 sm:py-4 bg-gradient-to-b from-[#125883] via-[#0C4568] to-[#083550] text-white font-medium text-sm sm:text-base border-t border-white/25 border-b border-black/30 shadow-[inset_0_2px_4px_rgba(255,255,255,0.2),inset_0_-2px_5px_rgba(0,0,0,0.45)] hover:opacity-95 cursor-pointer transition-all duration-200 active:scale-[0.99]"
+                      className="inline-flex items-center justify-center px-8 py-3.5 bg-[#111827] text-white font-medium text-sm sm:text-base rounded-full shadow-sm cursor-pointer transition-all duration-200 active:scale-[0.99]"
                     >
-                      {submitted ? "Message Sent!" : "Send Message"}
+                      {submitted ? "Message Sent!" : "Send this to us"}
                     </button>
                   </div>
                 </form>

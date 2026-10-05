@@ -15,40 +15,40 @@ interface CardConfig {
 const cardsData: CardConfig[] = [
   {
     id: 1,
-    label: "Projects Delivered",
-    number: "120+",
+    label: "Clients & Counting",
+    number: "25+",
     description:
-      "Helping ambitious brands turn ideas into impactful digital experiences.",
+      "Brands that trusted us to build their visibility.",
     side: "left",
     start: 0.02,
     end: 0.46,
   },
   {
     id: 2,
-    label: "Digital Solutions Built",
-    number: "200+",
+    label: "Brand Thinking",
+    number: "360°",
     description:
-      "Creating thoughtful websites and digital experiences designed to perform.",
+      "A holistic approach connecting strategy, creative design, and digital execution.",
     side: "right",
     start: 0.15,
     end: 0.59,
   },
   {
     id: 3,
-    label: "Years of Experience",
-    number: "8+",
+    label: "Industries",
+    number: "10+",
     description:
-      "Bringing strategy, creativity, and technology together.",
+      "Experience across categories from hospitality to real estate, lifestyle and beyond.",
     side: "left",
     start: 0.28,
     end: 0.72,
   },
   {
     id: 4,
-    label: "Happy Clients",
-    number: "85+",
+    label: "Brand Projects",
+    number: "50+",
     description:
-      "Partnering with businesses to create digital solutions that drive growth.",
+      "Built to make brands seen, heard & remembered.",
     side: "right",
     start: 0.41,
     end: 0.85,

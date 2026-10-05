@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import { Mail, Phone } from "lucide-react";
 
 export default function Footer() {
   return (
@@ -21,11 +22,9 @@ export default function Footer() {
 
           {/* Heading */}
           <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-[54px] font-medium text-[#4B5563] tracking-tight leading-tight">
-            Have a project?
+            Don’t just have a brand. <br />Make sure it gets seen.
+
           </h2>
-          <h3 className="text-3xl sm:text-4xl md:text-5xl lg:text-[54px] font-medium text-[#111827] tracking-tight leading-tight mt-1 mb-4 sm:mb-6">
-            Let&apos;s make it slay.
-          </h3>
 
           {/* Subtitle */}
           <p className="text-[#6B7280] text-sm sm:text-base md:text-[16px] leading-relaxed max-w-lg mx-auto mb-8 sm:mb-10">
@@ -43,10 +42,31 @@ export default function Footer() {
 
           {/* Card Bottom Meta & Navigation Links */}
           <div className="w-full pt-6 sm:pt-8 border-t border-black/[0.05] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs sm:text-sm text-[#4B5563]">
-            <p className="text-[#6B7280]">
-              Built from scratch by{" "}
-              <span className="font-bold text-[#111827]">Designncode</span>
-            </p>
+            <div className="flex items-center gap-4 text-[#6B7280]">
+              <a href="https://www.instagram.com/cavue.in/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="hover:text-[#0C3852] transition-colors">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                  <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+                </svg>
+              </a>
+              <a href="mailto:Palak@cavue.in" aria-label="Email" className="hover:text-[#0C3852] transition-colors">
+                <Mail size={20} strokeWidth={2} />
+              </a>
+              <a href="tel:9211544533" aria-label="Phone" className="hover:text-[#0C3852] transition-colors">
+                <Phone size={20} strokeWidth={2} />
+              </a>
+            </div>
 
             <div className="flex flex-wrap items-center justify-center gap-5 sm:gap-7 font-medium">
               <Link

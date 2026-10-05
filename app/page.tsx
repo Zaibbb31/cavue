@@ -382,15 +382,12 @@ export default function Home() {
                 / SERVICES
               </span>
               <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-[54px] xl:text-[60px] font-medium text-[#0C3852] tracking-tight leading-[1.08] uppercase">
-                WE TURN CREATIVITY <br />
-                INTO REAL IMPACT.
+                Everything Your Brand Needs to Be Seen.
               </h2>
             </div>
             <div className="max-w-md">
               <p className="text-[#38607A] text-sm sm:text-base md:text-[17px] leading-relaxed">
-                From strategy and branding to digital experiences and campaigns,
-                we combine creative thinking with smart execution to help ambitious
-                brands stand out and grow.
+                We create strategic, creative work that gets brands seen, remembered and chosen.
               </p>
             </div>
           </div>
@@ -424,9 +421,14 @@ export default function Home() {
                   </div>
 
                   {/* Title */}
-                  <h3 className="text-xl sm:text-2xl font-black text-[#0C3852] tracking-tight uppercase leading-tight">
-                    BRAND STRATEGY
-                  </h3>
+                  <div>
+                    <h3 className="text-xl sm:text-2xl font-black text-[#0C3852] tracking-tight uppercase leading-tight">
+                      SOCIAL MEDIA <br /> MANAGEMENT
+                    </h3>
+                    <p className="font-gochi text-[#0C3852] text-sm sm:text-base mt-2">
+                      Built to stay relevant.
+                    </p>
+                  </div>
                 </div>
 
                 {/* Content Marketing (Yellow) */}
@@ -454,10 +456,15 @@ export default function Home() {
                   </div>
 
                   {/* Title */}
-                  <h3 className="text-xl sm:text-2xl font-black text-[#0C3852] tracking-tight uppercase leading-tight">
-                    CONTENT <br />
-                    MARKETING
-                  </h3>
+                  <div>
+                    <h3 className="text-xl sm:text-2xl font-black text-[#0C3852] tracking-tight uppercase leading-tight">
+                      CONTENT <br />
+                      PRODUCTION
+                    </h3>
+                    <p className="font-gochi text-[#0C3852] text-sm sm:text-base mt-2">
+                      Made to be noticed.
+                    </p>
+                  </div>
                 </div>
               </div>
 
@@ -484,28 +491,11 @@ export default function Home() {
                 {/* Content */}
                 <div>
                   <h3 className="text-2xl sm:text-3xl font-black text-[#0C3852] tracking-tight uppercase leading-tight mb-1">
-                    SEO MARKETING
+                    BRANDING
                   </h3>
                   <p className="font-gochi text-[#0C3852] text-base sm:text-lg mb-3">
-                    Get found. Get noticed. Grow.
+                    Made to be remembered.
                   </p>
-                  <p className="text-xs sm:text-sm text-[#275975] leading-relaxed max-w-lg mb-6">
-                    We build smart SEO strategies that improve your visibility,
-                    attract the right traffic, and turn searches into meaningful business opportunities.
-                  </p>
-
-                  {/* Pills */}
-                  <div className="flex flex-wrap gap-2.5">
-                    <span className="px-4 py-1.5 rounded-full bg-[#C2E7F8]/80 text-[#0C3852] text-xs font-medium">
-                      SEO Strategy
-                    </span>
-                    <span className="px-4 py-1.5 rounded-full bg-[#C2E7F8]/80 text-[#0C3852] text-xs font-medium">
-                      Keyword Research
-                    </span>
-                    <span className="px-4 py-1.5 rounded-full bg-[#C2E7F8]/80 text-[#0C3852] text-xs font-medium">
-                      Organic Growth
-                    </span>
-                  </div>
                 </div>
               </div>
             </div>
@@ -521,6 +511,15 @@ export default function Home() {
               />
             </div>
           </div>
+
+          <div className="mt-12 sm:mt-16 flex justify-center">
+            <Link
+              href="/Service"
+              className="inline-flex items-center justify-center px-7 py-3 sm:px-8 sm:py-3.5 bg-gradient-to-b from-[#125883] via-[#0C4568] to-[#083550] text-white font-medium text-sm sm:text-base border-t border-white/25 border-b border-black/30 shadow-[inset_0_2px_4px_rgba(255,255,255,0.2),inset_0_-2px_5px_rgba(0,0,0,0.45)] hover:opacity-95 transition-opacity"
+            >
+              View More services
+            </Link>
+          </div>
         </div>
       </section>
 
@@ -529,36 +528,33 @@ export default function Home() {
         {/* Centered Headline */}
         <div className="max-w-5xl mx-auto text-center px-4 sm:px-6 lg:px-8 mb-10 sm:mb-14 md:mb-16">
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-[42px] font-medium text-[#0C3852] tracking-tight leading-[1.25] uppercase">
-            WE TURN BOLD IDEAS INTO BRANDS THAT{" "}
+            ALL THINGS DIGITAL: ONE CREATIVE PARTNER FOR EVERYTHING YOUR BRAND NEEDS TO{" "}
             <span className="font-gochi text-[#3CA8D9] font-normal lowercase tracking-normal text-[1.2em] inline-block">
-              capture attention
+              show up
             </span>
             ,{" "}
             <span className="font-gochi text-[#3CA8D9] font-normal lowercase tracking-normal text-[1.2em] inline-block">
-              spark curiosity
+              stand out
             </span>
-            , AND STAY MEMORABLE.
+            , AND{" "}
+            <span className="font-gochi text-[#3CA8D9] font-normal lowercase tracking-normal text-[1.2em] inline-block">
+              stay relevant
+            </span>{" "}
+            ONLINE.
           </h2>
         </div>
 
         {/* Video / Image Container with max-w-8xl and reduced height */}
         <div className="w-full max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 sm:pb-20 md:pb-28">
-          <div className="relative w-full aspect-[21/9] min-h-[280px] sm:min-h-[380px] md:min-h-[460px] max-h-[520px] bg-[#E2E8F0] overflow-hidden group">
-            <Image
-              src="https://images.unsplash.com/photo-1579783902614-a3fb3927b675?w=1920&auto=format&fit=crop&q=80"
-              alt="Brand Showreel Video"
-              fill
-              sizes="(max-width: 1536px) 100vw, 1440px"
-              className="object-cover transition-transform duration-700 group-hover:scale-105"
+          <div className="relative w-full aspect-[16/9] min-h-[280px] sm:min-h-[380px] md:min-h-[460px] max-h-[720px] bg-[#E2E8F0] overflow-hidden group">
+            <video
+              src="/cavuereel.mp4"
+              autoPlay
+              muted
+              loop
+              playsInline
+              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
             />
-            {/* Play Button Overlay */}
-            <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors flex items-center justify-center cursor-pointer">
-              <div className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-full bg-white/95 text-[#0C3852] flex items-center justify-center shadow-2xl transition-transform duration-300 group-hover:scale-110">
-                <svg className="w-7 h-7 sm:w-8 sm:h-8 md:w-10 md:h-10 fill-current translate-x-0.5" viewBox="0 0 24 24">
-                  <path d="M8 5v14l11-7z" />
-                </svg>
-              </div>
-            </div>
           </div>
         </div>
       </section>

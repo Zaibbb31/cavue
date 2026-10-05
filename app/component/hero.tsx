@@ -2,24 +2,15 @@
 
 import React, { useState, useRef } from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function HeroSection() {
-  const [email, setEmail] = useState("");
-  const [submitted, setSubmitted] = useState(false);
   const [isPlayingVideo1, setIsPlayingVideo1] = useState(true);
   const [isPlayingVideo2, setIsPlayingVideo2] = useState(true);
   const [isPlayingVideo3, setIsPlayingVideo3] = useState(true);
   const [isPlayingVideo4, setIsPlayingVideo4] = useState(true);
   const [isMuted, setIsMuted] = useState(true);
   const carouselRef = useRef<HTMLDivElement>(null);
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (email) {
-      setSubmitted(true);
-      setTimeout(() => setSubmitted(false), 3500);
-    }
-  };
 
   const scrollCarousel = (direction: "left" | "right") => {
     if (carouselRef.current) {
@@ -36,25 +27,7 @@ export default function HeroSection() {
       {/* Top Hero Container (Headline, Rating, CTA) */}
       <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Rating Badge */}
-        <div className="flex items-center gap-3.5 mb-6 sm:mb-8">
-          <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#18181B] text-white flex items-center justify-center shadow-md">
-            <svg
-              className="w-4 h-4 sm:w-5 sm:h-5 fill-current text-white"
-              viewBox="0 0 24 24"
-            >
-              <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
-            </svg>
-          </div>
-          <div className="flex flex-col text-left">
-            <span className="text-sm sm:text-base font-bold text-[#111317] leading-tight tracking-tight">
-              4.9/5 Rating
-            </span>
-            <span className="text-xs sm:text-[13px] text-slate-500 font-normal">
-              Based on 10,000+ Creator Reviews
-            </span>
-          </div>
-        </div>
+        
 
         {/* 2-Column Split: Headline on Left, Subtitle & Email CTA on Right */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-end mb-14 sm:mb-20">
@@ -62,39 +35,24 @@ export default function HeroSection() {
           {/* Left Column: Big Bold Headline */}
           <div className="lg:col-span-7">
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-[68px] xl:text-[74px] font-medium text-[#111317] tracking-[-0.035em] leading-[1.05]">
-              Built For Real Growth, <br />
-              <span className="text-[#111317]">Loved By Creators</span>
+              Your brand deserves visibility unlimited.
             </h1>
           </div>
 
           {/* Right Column: Descriptive text + Email Form */}
           <div className="lg:col-span-5 flex flex-col justify-end lg:pl-4">
             <p className="text-slate-600 text-base sm:text-lg leading-relaxed mb-6 sm:mb-7 font-normal max-w-md">
-              Connect with your audience and grow revenue faster with smart, AI-powered campaigns.
+              Let’s make your brand the one people talk about.
             </p>
 
-            {/* Email Input + Pill Button */}
-            <form
-              onSubmit={handleSubmit}
-              className="relative flex items-center bg-[#F1F2F4]/90 hover:bg-[#EEF0F2] focus-within:bg-white border border-slate-200/90 focus-within:border-slate-300 rounded-full p-1.5 pl-5 sm:pl-6 max-w-md w-full transition-all shadow-[0_2px_8px_rgba(0,0,0,0.03)] focus-within:shadow-[0_4px_16px_rgba(0,0,0,0.06)]"
+            {/* CTA Button */}
+            <Link
+              href="/contact"
+              className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-[#348DBF] hover:bg-[#2A7AA8] text-white text-sm sm:text-base font-semibold tracking-wide shadow-[0_4px_14px_rgba(52,141,191,0.35)] hover:shadow-[0_6px_20px_rgba(52,141,191,0.45)] transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] cursor-pointer w-fit"
             >
-              <input
-                type="email"
-                required
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder={submitted ? "Thanks! We'll be in touch." : "Enter your email"}
-                className="w-full bg-transparent text-sm sm:text-base text-slate-800 placeholder:text-slate-400 focus:outline-none pr-2 disabled:opacity-75"
-                disabled={submitted}
-              />
-              <button
-                type="submit"
-                className="flex-shrink-0 inline-flex items-center gap-1.5 px-5 sm:px-6 py-3 rounded-full bg-[#348DBF] hover:bg-[#2A7AA8] text-white text-xs sm:text-sm font-semibold tracking-wide shadow-[0_4px_14px_rgba(52,141,191,0.35)] hover:shadow-[0_6px_20px_rgba(52,141,191,0.45)] transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
-              >
-                <span>{submitted ? "Sent!" : "Get A Free Demo"}</span>
-                {!submitted && <span className="text-base font-normal">→</span>}
-              </button>
-            </form>
+              <span>Build with us</span>
+              
+            </Link>
 
           </div>
         </div>

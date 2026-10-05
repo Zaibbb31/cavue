@@ -4,73 +4,51 @@ import React, { useState } from "react";
 
 interface FAQItem {
   id: number;
-  category: "General" | "Pricing" | "Process" | "Results";
   question: string;
   answer: string;
 }
 
-const categories = ["General", "Pricing", "Process", "Results"] as const;
-type Category = (typeof categories)[number];
-
 const faqData: FAQItem[] = [
   {
     id: 1,
-    category: "General",
-    question: "What exactly does your agency do?",
+    question: "What does your agency do?",
     answer:
-      "We help brands build, launch, and grow through social media management, performance marketing, content production, AI-generated video, brand identity, founder-led marketing, and web design & development. Instead of treating these as separate pieces, we connect them into one clear brand experience.",
+      "We are a full-service creative agency that helps brands build, launch, and grow. Our expertise spans web design, development, brand identity, and digital marketing—giving you a unified approach to brand building.",
   },
   {
     id: 2,
-    category: "General",
-    question: "What types of brands do you work with?",
+    question: "How much do your services cost?",
     answer:
-      "We partner with ambitious startups, fast-growing scale-ups, and established enterprises across technology, luxury, consumer goods, fashion, lifestyle, and B2B sectors who are ready to make a bold impact.",
+      "Our pricing is tailored to your specific needs. Since every project is unique, we provide custom quotes based on the scope, complexity, and timeline of your requirements after our initial discovery call.",
   },
   {
     id: 3,
-    category: "General",
-    question: "Do you work with startups or established brands?",
+    question: "Do you work on one-off projects or long-term partnerships?",
     answer:
-      "Both! We tailor our collaborative approach depending on your stage—helping early-stage companies find product-market narrative fit, and guiding established brands through high-impact digital transformation and creative repositioning.",
+      "We do both! We can dive into intensive one-off projects to help you launch something new, or we can act as a dedicated extension of your team through long-term retainers.",
   },
   {
     id: 4,
-    category: "General",
-    question: "Why work with you instead of a traditional agency?",
+    question: "What services do you offer?",
     answer:
-      "Unlike traditional agencies with bloated timelines and fragmented communication, we operate as an agile, multidisciplinary extension of your core team. We combine high-velocity execution with world-class design standards and data-driven results.",
+      "We offer a comprehensive suite of digital services including UI/UX Design, Web Development, Brand Strategy & Identity, Social Media Management, Content Creation, and Performance Marketing.",
   },
   {
     id: 5,
-    category: "Pricing",
-    question: "How do you structure your project pricing and retainers?",
+    question: "How long does a project take?",
     answer:
-      "We offer transparent, scope-based project sprints and monthly dedicated partnership retainers tailored to your roadmap, goals, and growth speed.",
+      "Timelines vary depending on the scope and complexity of the project. A standard website design and development project typically takes 4 to 8 weeks, while smaller branding sprints can be completed much faster.",
   },
   {
     id: 6,
-    category: "Process",
-    question: "What does the onboarding and kickoff process look like?",
+    question: "How do we get started?",
     answer:
-      "Our onboarding is streamlined: we start with an intensive discovery and alignment workshop, define the core milestones and deliverables within 48 hours, and begin iterative design and execution immediately.",
-  },
-  {
-    id: 7,
-    category: "Results",
-    question: "How do you measure and report performance?",
-    answer:
-      "We establish clear measurable KPIs before kickoff—ranging from engagement velocity, brand recall, customer conversion, and organic acquisition growth—with transparent live reporting dashboards.",
+      "It's simple! Reach out to us through our contact form. We'll schedule a brief discovery call to understand your goals, define the scope, and craft a tailored proposal to kick things off.",
   },
 ];
 
 export default function FAQSection() {
-  const [activeCategory, setActiveCategory] = useState<Category>("General");
   const [openIds, setOpenIds] = useState<number[]>([1]);
-
-  const filteredFaqs = faqData.filter(
-    (faq) => faq.category === activeCategory
-  );
 
   const toggleAccordion = (id: number) => {
     setOpenIds((prev) =>
@@ -91,41 +69,15 @@ export default function FAQSection() {
             WE&apos;VE GOT ANSWERS.
           </h2>
           <p className="text-[#38607A] text-sm sm:text-base md:text-[17px] leading-relaxed max-w-xl mx-auto">
-            We believe great collaboration starts with clarity. Find answers to
-            the questions we hear most about our process, services, timelines,
-            and creative partnerships.
+             Everything you might want to know before we get to work.
           </p>
         </div>
 
         {/* Main Content Box */}
         <div className="bg-white p-6 sm:p-10 border border-black/[0.04] shadow-sm">
-          {/* Category Tabs */}
-          <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 mb-8 sm:mb-10">
-            {categories.map((cat) => {
-              const isActive = activeCategory === cat;
-              return (
-                <button
-                  key={cat}
-                  onClick={() => {
-                    setActiveCategory(cat);
-                    const firstInCat = faqData.find((f) => f.category === cat);
-                    if (firstInCat) setOpenIds([firstInCat.id]);
-                  }}
-                  className={`px-6 py-2.5 text-sm sm:text-base transition-all duration-200 cursor-pointer ${
-                    isActive
-                      ? "bg-[#2575A5] text-white font-medium shadow-md shadow-[#2575A5]/25"
-                      : "bg-transparent text-[#0C3852] hover:text-[#2575A5] font-normal"
-                  }`}
-                >
-                  {cat}
-                </button>
-              );
-            })}
-          </div>
-
           {/* Accordion List */}
           <div className="space-y-3.5 sm:space-y-4">
-            {filteredFaqs.map((faq) => {
+            {faqData.map((faq) => {
               const isOpen = openIds.includes(faq.id);
 
               return (
