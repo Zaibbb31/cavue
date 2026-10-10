@@ -9,10 +9,13 @@ import { Phone, Mail, MapPin } from "lucide-react";
 export default function ContactPage() {
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
   const [budget, setBudget] = useState("");
   const [selectedServices, setSelectedServices] = useState<string[]>([]);
   const [message, setMessage] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   const servicesList = [
     "Content Creation",
@@ -28,15 +31,76 @@ export default function ContactPage() {
     );
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    // Only accept characters (letters and spaces)
+    const filtered = e.target.value.replace(/[^a-zA-Z\s]/g, "");
+    setFullName(filtered);
+  };
+
+  const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    // Only accept numbers up to 10 digits
+    const digitsOnly = e.target.value.replace(/\D/g, "").slice(0, 10);
+    setPhone(digitsOnly);
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
-    setTimeout(() => setSubmitted(false), 4000);
-    setFullName("");
-    setEmail("");
-    setBudget("");
-    setSelectedServices([]);
-    setMessage("");
+    setIsSubmitting(true);
+    setErrorMessage(null);
+
+    const trimmedName = fullName.trim();
+    if (!trimmedName) {
+      setErrorMessage("Please enter your name.");
+      setIsSubmitting(false);
+      return;
+    }
+
+    if (!/^[a-zA-Z\s]+$/.test(trimmedName)) {
+      setErrorMessage("Name field only accepts characters.");
+      setIsSubmitting(false);
+      return;
+    }
+
+    if (phone && phone.length !== 10) {
+      setErrorMessage("Phone number must be a 10-digit number.");
+      setIsSubmitting(false);
+      return;
+    }
+
+    try {
+      const res = await fetch("/api/leads", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          fullName: trimmedName,
+          email,
+          phone,
+          budget,
+          services: selectedServices,
+          message,
+        }),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok || !data.success) {
+        throw new Error(data.error || "Failed to submit. Please try again.");
+      }
+
+      setSubmitted(true);
+      setTimeout(() => setSubmitted(false), 5000);
+      setFullName("");
+      setEmail("");
+      setPhone("");
+      setBudget("");
+      setSelectedServices([]);
+      setMessage("");
+    } catch (err: unknown) {
+      const msg = err instanceof Error ? err.message : "Something went wrong.";
+      setErrorMessage(msg);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -126,7 +190,9 @@ export default function ContactPage() {
                         type="text"
                         required
                         value={fullName}
-                        onChange={(e) => setFullName(e.target.value)}
+                        onChange={handleNameChange}
+                        pattern="[a-zA-Z\s]+"
+                        title="Only characters are allowed"
                         className="w-full bg-transparent border-b border-[#D1D5DB] pb-3 text-[15px] sm:text-[16px] text-black focus:outline-none focus:border-[#AD4567] transition-colors"
                       />
                     </div>
@@ -188,7 +254,27 @@ export default function ContactPage() {
                     </div>
                   </div>
 
-                  {/* Row 3: Services Selection */}
+                  {/* Row 3: Phone Number */}
+                  <div className="flex flex-col">
+                    <label
+                      htmlFor="phone"
+                      className="text-[11px] sm:text-[12px] font-semibold text-[#6B7280] tracking-wider uppercase mb-2"
+                    >
+                      Phone Number
+                    </label>
+                    <input
+                      id="phone"
+                      type="tel"
+                      inputMode="numeric"
+                      maxLength={10}
+                      value={phone}
+                      onChange={handlePhoneChange}
+                      placeholder="e.g. 9211544533"
+                      className="w-full bg-transparent border-b border-[#D1D5DB] pb-3 text-[15px] sm:text-[16px] text-black placeholder-[#9CA3AF] focus:outline-none focus:border-[#AD4567] transition-colors"
+                    />
+                  </div>
+
+                  {/* Row 4: Services Selection */}
                   <div className="flex flex-col space-y-4">
                     <label className="text-[11px] sm:text-[12px] font-semibold text-[#6B7280] tracking-wider uppercase">
                       Services Interested In
@@ -252,13 +338,28 @@ export default function ContactPage() {
                      </label>
                   </div>
 
+                  {/* Error & Success Feedback */}
+                  {errorMessage && (
+                    <div className="p-3 text-sm text-red-600 bg-red-50 border border-red-200 rounded-lg">
+                      {errorMessage}
+                    </div>
+                  )}
+
+                  {submitted && (
+                    <div className="p-3.5 text-sm text-emerald-800 bg-emerald-50 border border-emerald-200 rounded-lg flex items-center gap-2">
+                      <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                      Thank you! Your message has been sent successfully. We will get back to you shortly.
+                    </div>
+                  )}
+
                   {/* Submit Button */}
                   <div className="pt-2">
                     <button
                       type="submit"
-                      className="inline-flex items-center justify-center px-8 py-3.5 bg-[#111827] text-white font-medium text-sm sm:text-base rounded-full shadow-sm cursor-pointer transition-all duration-200 active:scale-[0.99]"
+                      disabled={isSubmitting}
+                      className="inline-flex items-center justify-center px-8 py-3.5 bg-[#111827] hover:bg-[#0C3852] disabled:opacity-60 text-white font-medium text-sm sm:text-base rounded-full shadow-sm cursor-pointer transition-all duration-200 active:scale-[0.99]"
                     >
-                      {submitted ? "Message Sent!" : "Send this to us"}
+                      {isSubmitting ? "Sending..." : submitted ? "Message Sent!" : "Send this to us"}
                     </button>
                   </div>
                 </form>

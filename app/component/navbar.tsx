@@ -15,7 +15,7 @@ const navItems: NavItem[] = [
   { label: "About Us", href: "/about" },
   { label: "Services", href: "/Service" },
   { label: "Work", href: "/projectpage" },
-  { label: "Insights", href: "/insights" },
+  { label: "Insights", href: "/blogs" },
 ];
 
 export default function Navbar() {
@@ -117,6 +117,8 @@ export default function Navbar() {
               const isActive =
                 item.href === "/"
                   ? pathname === "/"
+                  : item.href === "/blogs"
+                  ? pathname?.startsWith("/blogs") || pathname?.startsWith("/insights")
                   : pathname?.startsWith(item.href);
 
               return (
@@ -210,6 +212,8 @@ export default function Navbar() {
                 const isActive =
                   item.href === "/"
                     ? pathname === "/"
+                    : item.href === "/blogs"
+                    ? pathname?.startsWith("/blogs") || pathname?.startsWith("/insights")
                     : pathname?.startsWith(item.href);
 
                 return (

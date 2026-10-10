@@ -47,7 +47,15 @@ const faqData: FAQItem[] = [
   },
 ];
 
-export default function FAQSection() {
+interface FAQSectionProps {
+  className?: string;
+  paddingClassName?: string;
+}
+
+export default function FAQSection({
+  className = "",
+  paddingClassName = "py-16 sm:py-20 md:py-28",
+}: FAQSectionProps = {}) {
   const [openIds, setOpenIds] = useState<number[]>([1]);
 
   const toggleAccordion = (id: number) => {
@@ -57,7 +65,7 @@ export default function FAQSection() {
   };
 
   return (
-    <section className="w-full py-16 sm:py-20 md:py-28 bg-[#FAFAFA] text-[#0C3852] relative z-20 border-t border-black/[0.04]">
+    <section className={`w-full ${paddingClassName} bg-[#FAFAFA] text-[#0C3852] relative z-20 border-t border-black/[0.04] ${className}`}>
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Centered Header */}
         <div className="text-center mb-12 sm:mb-16">

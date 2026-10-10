@@ -94,7 +94,7 @@ export default function Footer() {
                 Work
               </Link>
               <Link
-                href="/insights"
+                href="/blogs"
                 className="text-[#4B5563] hover:text-[#0C3852] transition-colors"
               >
                 Insights
